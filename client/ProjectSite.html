@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>HSL-Timetable</title>
@@ -7,13 +7,29 @@
     <script src="JS/HSL_JS.js"></script>
 </head>
 <body>
+
+<div class="topnav" id="topnav">
+    <p id="login" class="login" onclick="displayLogin()">KIRJAUDU</p>
+    <div id="dropDownMenu" class="dropdownContent">
+        <form>
+            <fieldset id="loginSet">
+                <input id="username" type="text" name="username" placeholder="Anna nimi" required></br>
+                <input type="submit" id="loginBtn" value="Kirjaudu" onclick="createUser()">
+            </fieldset>
+        </form>
+    </div>
+</div> </br></br></br></br>
+
+
 <div id="queryDiv">
 <form action="" >
     <h2 align="center">Etsi pysäkkiä nimellä:</h2>
-    <textarea class="center-block" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi!" ></textarea><br>
+    <textarea class="center-block" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." ></textarea><br>
     <input class="center-block" type="submit" value="Hae" align="middle" id="SubmitBtn">
-
 </form>
+</div>
+<div class="favDiv" id="favDiv">
+    <p>SUOSIKKIPYSÄKIT</p>
 </div>
 </body>
 </html>

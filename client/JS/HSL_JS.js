@@ -1,3 +1,9 @@
+function createUser() {
+    var Name = document.getElementById('username').value;
+    alert(Name);
+    document.getElementById('dropDownMenu').style.display = 'none';
+}
+
 
 var stopName = document.getElementById('searchField').value;
 
@@ -26,3 +32,23 @@ function getDataForStop(stopName) {
         });
     }
 }
+
+    /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+    function displayLogin() {
+        document.getElementById("dropDownMenu").classList.toggle("show");
+    }
+
+// Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.login')) {
+            var dropdowns = document.getElementsByClassName("dropdownContent");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
