@@ -6,26 +6,27 @@
     <link rel="stylesheet" href="CSS/MainPage.css">
     <script src="JS/HSL_JS.js"></script>
 </head>
+
 <body>
 
 <div class="topnav" id="topnav">
-    <p id="login" class="login" onclick="displayLogin()">KIRJAUDU</p>
+    <p id="login" class="login" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p>
     <div id="dropDownMenu" class="dropdownContent">
-        <form>
+        <form novalidate>
             <fieldset id="loginSet">
                 <input id="username" type="text" name="username" placeholder="Anna nimi" required></br>
-                <input type="submit" id="loginBtn" value="Kirjaudu" onclick="createUser()">
+                <input type="submit" class="credentials" id="createBtn" value="Luo käyttäjä" onclick="createUser()">
+                <input type="submit" class="credentials" id="loginBtn" value="Kirjaudu" onclick="userlogin()">
             </fieldset>
         </form>
     </div>
 </div> </br></br></br></br>
 
-
 <div id="queryDiv">
 <form action="" >
     <h2 align="center">Etsi pysäkkiä nimellä:</h2>
     <textarea class="center-block" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." ></textarea><br>
-    <input class="center-block" type="submit" value="Hae" align="middle" id="SubmitBtn">
+    <input class="center-block" type="submit" value="Hae" align="middle" id="SubmitBtn" onclick="getDataForStop(document.getElementById('searchField').value)">
 </form>
 </div>
 <div class="favDiv" id="favDiv">
