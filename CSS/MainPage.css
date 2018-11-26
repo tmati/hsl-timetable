@@ -1,0 +1,35 @@
+body {
+    background:url("../res/img/Metro-bg.png");
+    background-repeat:no-repeat;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+.center-block {
+    margin: auto;
+    display: block;
+}
+
+#searchField {
+    height: 30px;
+    width: 300px;
+    border-radius: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+}
+h2 {
+    font-weight: bold;
+    color: white;
+
+}
+
+#SubmitBtn {
+    height: 30px;
+    width: 40px;
+    border-color: white;
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+    background-color: transparent;
+}
