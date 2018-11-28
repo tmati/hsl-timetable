@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="UTF-8">
     <title>HSL-Timetable</title>
     <link rel="stylesheet" href="CSS/MainPage.css">
     <script src="JS/HSL_JS.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <!-- The view when opening the web page. -->
 
@@ -22,7 +22,7 @@
 <!-- Setup for the login button and pop-up menu -->
 <div class="container" id="topnav">
     <p id="login" class="login" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p>
-    <div id="dropDownMenu" class="container">
+    <div id="dropDownMenu" class="container-fluid">
 
         <!-- Login form. -->
         <form novalidate>
@@ -37,18 +37,19 @@
 
 <!-- The search elements in the center of the page. -->
 
-<div id="queryDiv">
-<form action="" >
-    <h2 align="center">Etsi pysäkkiä nimellä:</h2>
-    <div class="autocomplete">
-    <textarea class="center-block" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeypress="parseStops()" ></textarea><br>
-    </div>
-    <div>
-    <input type="submit" value="Hae" align="middle" id="SubmitBtn" onclick="getDataForStop(document.getElementById('searchField').value)">
-    </div>
-</form>
-</div>
+<div id="queryDiv" class="container-fluid">
+    <form action="" >
+        <h2>Etsi pysäkkiä nimellä:</h2>
+        <div class="container-fluid" id="autocomplete">
+            <textarea class="center-block" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeyup=getDataForStop(document.getElementById('searchField').value)></textarea>
+        </div>
 
+    </form>
+
+</div>
+<div class="container-fluid" id="btnDiv">
+    <button id="SubmitBtn" onclick="getDataForStop(document.getElementById('searchField').value)">Hae</button>
+</div>
 <div class="favDiv" id="favDiv">
     <!-- The list of favourite stops for logged in users. Will appear on click. -->
     <p>SUOSIKKIPYSÄKIT</p>

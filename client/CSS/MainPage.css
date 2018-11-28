@@ -1,57 +1,56 @@
 body {
-    background:url("../res/img/Metro-bgnb.png");
+    background:url("../res/img/Ferry-bgnb.png");
     background-repeat:no-repeat;
     background-size: 100%;
     font-family: sans-serif;
     min-height: 100%;
 }
 
-.center-block {
-    margin: auto;
-    display: block;
+fieldset {
+    border: solid;
+    border-color: white;
+    border-radius: 1em;
 }
 
 
 #searchField {
-    height: 1.5em;
+    height: 1.7em;
     width: 20em;
     border-radius: 1em;
     font-size: 1.5em;
     font-family: sans-serif;
     text-align: center;
     font-weight: bold;
-    margin: auto;
 }
 
-h2 {
+#queryDiv h2 {
     font-weight: bold;
     color: white;
+    text-align: center;
 }
 
 #SubmitBtn {
     height: 2.5em;
     width: 6em;
-    border-color: white;
     border-radius: 1em;
     color: white;
     font-weight: bolder;
     background-color: transparent;
-    border: solid;
+    border: solid white;
+    cursor: pointer;
 }
 
-.container{
+#topnav {
+    margin-top: 1em;
     background-color: transparent;
     border: white;
     float: right;
-    position: relative;
     display: inline-block;
-    padding: 2em;
-
 }
 
 .credentials {
     border: solid;
-    height: 3em;
+    min-height: 2.5em;
     width: 7.8em;
     border-color: white;
     border-radius: 1em;
@@ -61,11 +60,12 @@ h2 {
     margin-left: auto;
     margin-right: auto;
     display: inline-block;
-    margin-top: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-.container p {
-    float: left;
+#topnav p {
+    float: right;
     color: #f2f2f2;
     text-align: center;
     padding:  0.6em;
@@ -74,14 +74,15 @@ h2 {
     font-weight: bold;
 }
 
-.topnav p:hover {
+#topnav p:hover {
     background-color: transparent;
     border-style: solid;
     border-color: white;
 }
 
-.topnav p.active {
-    background-color: transparent;
+#topnav p.active {
+    background-color: white;
+    color: gray;
 }
 
 #login {
@@ -116,19 +117,16 @@ h2 {
 #dropDownMenu {
     display: none;
     position: absolute;
+    overflow: auto;
     box-shadow: 0px 0.8em 1.6em 0em rgba(0,0,0,0.2);
     z-index: 1;
+    float: right;
     right: 0;
     background-image: url("../res/img/Metro-bgnb.png");
-    min-width: 0em;
-    max-width: 21em;
-    padding: 0;
+    min-width: 16em;
+    border-radius: 0.4em;
 }
-fieldset {
-    border: solid;
-    border-color: white;
-    border-radius: 1em;
-}
+
 
 #username {
     border-radius: 2em;
@@ -137,10 +135,11 @@ fieldset {
     height: 2em;
     width: 16em;
     display: inline-block;
+    padding-top: 0.5em;
 }
 
 #queryDiv {
-    padding-top: 100px;
+    padding-top: 10em;
 }
 
 .show {
@@ -148,8 +147,11 @@ fieldset {
 }
 
 input[type="submit"]:active {
-    color: black;
-    background-color: white;
+    color: gray;
+}
+
+input[type="submit"]:hover {
+    color: gray;
 }
 
 #SubmitBtn {
@@ -162,11 +164,11 @@ input[type="submit"]:active {
 body {
     font: 16px Arial;
 }
-.autocomplete {
+#autocomplete {
     /*the container must be positioned relative:*/
-    margin-left: 25%;
     position: relative;
-    display: inline-block;
+    margin-left: auto;
+    width: 32em;
 }
 input {
     border: 1px solid transparent;
@@ -180,16 +182,17 @@ input[type=text] {
 }
 
 .autocomplete-items {
-    position: absolute;
     border: 1px solid #d4d4d4;
     border-bottom: none;
     border-top: none;
     z-index: 99;
+    width: 30em;
     /*position the autocomplete items to be the same width as the container:*/
     top: 100%;
     left: auto;
     right: auto;
 }
+
 .autocomplete-items div {
     padding: 1em;
     cursor: pointer;
@@ -208,3 +211,15 @@ input[type=text] {
     color: #ffffff;
 }
 
+#btnDiv {
+    margin-top: 1em;
+}
+
+#SubmitBtn:active {
+    color: gray;
+    background-color: white;
+}
+
+#SubmitBtn:hover {
+    color: gray;
+}
