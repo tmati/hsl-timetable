@@ -89,9 +89,9 @@ fieldset {
     float: right;
 }
 
-.favDiv {
+#favDiv {
     background-color: transparent;
-    border: white;
+
     position: fixed;
     left: 50%;
     bottom: 0.1em;
@@ -99,7 +99,7 @@ fieldset {
     margin: 0 auto;
 }
 
-.favDiv p {
+#favDiv p {
     color: #f2f2f2;
     text-align: center;
     padding: 0.4em 0.6em;
@@ -108,7 +108,7 @@ fieldset {
     font-weight: bold;
 }
 
-.favDiv p:hover {
+#favDiv p:hover {
     background-color: transparent;
     border-style: solid;
     border-color: white;
@@ -122,7 +122,7 @@ fieldset {
     z-index: 1;
     float: right;
     right: 0;
-    background-image: url("../res/img/Metro-bgnb.png");
+    background-image: url("../res/img/Ferry-bgnb.png");
     min-width: 16em;
     border-radius: 0.4em;
 }
@@ -135,7 +135,7 @@ fieldset {
     height: 2em;
     width: 16em;
     display: inline-block;
-    padding-top: 0.5em;
+    margin-top: 0.5em;
 }
 
 #queryDiv {
@@ -222,4 +222,40 @@ input[type=text] {
 
 #SubmitBtn:hover {
     color: gray;
+}
+
+.favTable {
+    background-color: white;
+    border-radius: 1.5em;
+    max-width: 25em;
+    display: none;
+}
+
+.favTable h4 {
+    color: gray();
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5em;
+
+}
+
+table {
+    text-align: center;
+    margin: 2em;
+}
+td {
+    text-align: center;
+}
+
+tr {
+    text-align: center;
+    border-bottom: 2px solid grey;
+}
+
+thead, tbody { display: block; }
+
+tbody {
+    height: 4em;/* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
 }

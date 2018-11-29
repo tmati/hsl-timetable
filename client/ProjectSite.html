@@ -50,9 +50,36 @@
 <div class="container-fluid" id="btnDiv">
     <button id="SubmitBtn" onclick="displayStopTimeTable(document.getElementById('searchField').value)">Hae</button>
 </div>
-<div class="favDiv" id="favDiv">
+<div class="container-floating" id="favDiv" onclick="showFavTable()" >
     <!-- The list of favourite stops for logged in users. Will appear on click. -->
-    <p>SUOSIKKIPYSÄKIT</p>
+    <p id="favText" >SUOSIKKIPYSÄKIT</p>
+    <div class="favTable" id="favTable">
+    <h4>Pysäkin nimi</h4>
+    <table id="resultTable">
+        <tbody>
+        <tr>
+            <td>Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.
+            </td>
+        </tr>
+        <tr>
+            <td>Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.
+            </td>
+        </tr><tr>
+            <td>Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.
+            </td>
+        </tr><tr>
+            <td>Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.
+            </td>
+        </tr><tr>
+            <td>Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.
+            </td>
+        </tr><tr>
+            <td>Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
 </div>
 </body>
 </html>

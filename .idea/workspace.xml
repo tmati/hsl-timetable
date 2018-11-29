@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="efeb5286-04f4-4a02-a267-da8080cdb89e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/CSS/MainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/CSS/MainPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/JS/HSL_JS.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/JS/HSL_JS.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/ProjectSite.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/ProjectSite.html" afterDir="false" />
     </list>
@@ -23,8 +24,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/ProjectSite.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="765">
-                  <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+                <state relative-caret-position="969">
+                  <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
@@ -36,8 +37,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/CSS/MainPage.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="17">
-                  <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+                <state relative-caret-position="129">
+                  <caret line="230" column="17" selection-start-line="230" selection-start-column="17" selection-end-line="230" selection-end-column="17" />
                 </state>
               </provider>
             </entry>
@@ -45,8 +46,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/JS/HSL_JS.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="319">
-                  <caret line="110" column="151" selection-start-line="110" selection-start-column="151" selection-end-line="110" selection-end-column="151" />
+                <state relative-caret-position="3264">
+                  <caret line="255" column="40" selection-start-line="255" selection-start-column="40" selection-end-line="255" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -60,6 +61,7 @@
       <find>drop</find>
       <find>querydiv</find>
       <find>sub</find>
+      <find>fav</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -157,20 +159,22 @@
       <workItem from="1543389761218" duration="4883000" />
       <workItem from="1543401925801" duration="12644000" />
       <workItem from="1543414698241" duration="1456000" />
-      <workItem from="1543420045434" duration="11519000" />
+      <workItem from="1543420045434" duration="11689000" />
+      <workItem from="1543441184899" duration="607000" />
+      <workItem from="1543488561354" duration="10902000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34435000" />
+    <option name="totallyTimeSpent" value="46114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49920762" visible="true" weight="0.110067114" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4971591" visible="true" weight="0.15369128" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" sideWeight="0.5007924" side_tool="true" visible="true" weight="0.110067114" />
+      <window_info id="Favorites" order="2" sideWeight="0.50284094" side_tool="true" weight="0.110067114" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297587" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -181,7 +185,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297587" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4986577" visible="true" weight="0.1541555" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4986577" visible="true" weight="0.24262735" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5013423" side_tool="true" weight="0.3297587" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -197,22 +201,22 @@
     <entry file="file://$PROJECT_DIR$/hsl-timetable/client/CSS/MainPage.css" />
     <entry file="file://$PROJECT_DIR$/client/CSS/MainPage.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        <state relative-caret-position="129">
+          <caret line="230" column="17" selection-start-line="230" selection-start-column="17" selection-end-line="230" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/ProjectSite.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="969">
+          <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/JS/HSL_JS.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="110" column="151" selection-start-line="110" selection-start-column="151" selection-end-line="110" selection-end-column="151" />
+        <state relative-caret-position="3264">
+          <caret line="255" column="40" selection-start-line="255" selection-start-column="40" selection-end-line="255" selection-end-column="40" />
         </state>
       </provider>
     </entry>

@@ -34,12 +34,12 @@ function userlogin() {
         var foundName;
         //var foundName = Select from USER values WHERE Name = ('givenName');
         if (foundName != null) {
-            document.getElementById('login').innerHTML = "Hei! " + foundName + "on kirjautuneena sisään!"
+            document.getElementById('login').innerHTML =foundName;
             var logoutParagraph = document.createElement('a');
             logoutParagraph.id = "logoutBtn"
             logoutParagraph.innerHTML = 'Logout'
             logoutParagraph.onclick = function () {
-                document.getElementById('login').innerHTML = "LUO TUNNUS / KIRJAUDU";
+                document.getElementById('login').innerHTML = "LUO KÄYTTÄJÄ | KIRJAUDU";
                 deleteElement('logoutBtn');
             }
         } else {
@@ -108,7 +108,7 @@ function displayStopTimeTable(stopName) {
                     console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
 
                     //arrival time in minutes
-                    console.log("Arriving in " + (((stopData.data.stops[0].stoptimesWithoutPatterns[i].scheduledArrival - getSecSinceMidnight())/60)|0) + " minutes");
+                    console.log("Arriving in " + (((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight())/60)|0) + " minutes");
                 }
 
 
@@ -116,7 +116,7 @@ function displayStopTimeTable(stopName) {
         }
         var data =  `{ stops(name: " ` + stopName + `") {
             stoptimesWithoutPatterns(numberOfDepartures:10) {
-                scheduledArrival
+                realtimeArrival
                 trip {
                     route {
                         shortName
@@ -240,4 +240,21 @@ function autocomplete(inp, arr) {
     document.addEventListener("click", function (e) {
         closeAllLists(e.target);
     });
+}
+
+function showFavTable() {
+    if (document.getElementById('login').innerHTML != "LUO KÄYTTÄJÄ | KIRJAUDU") {
+        /*Select pysäkki from favourites where userID = document.getElementById('login').value;
+        for (var i = 0; i < resultSet.length; i++) {
+            var tr = document.createElement('tr');
+            var td = document.createElement('td');
+            tr.id = "Row" + [i];
+            td.id = "TD" + [i];
+            td.innerHTML = resultSet[i];
+            td.onclick = displayStopTimeTable(this.innerHTML);
+            tr.appendChild(td);
+            resultTable.appendChild(tr);        }
+    */
+    }
+    document.getElementById('favTable').style.display = 'block';
 }
