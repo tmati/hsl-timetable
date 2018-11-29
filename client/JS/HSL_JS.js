@@ -84,11 +84,15 @@ function getDataForStop(stopName) {
     }
 }
 
-function displayStopTimeTable(stopName) {
+function cleanAndSaveName(stopName) {
     if (stopName != null) {
         stopName.replace(/\s+/,"");
         stopName = stopName.substring(stopName.indexOf("/")+2);
-        console.log(stopName);
+        sessionStorage.setItem('stopNumber', stopName);
+}
+
+
+function displayStopTimeTable(cleanStopName) {
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
