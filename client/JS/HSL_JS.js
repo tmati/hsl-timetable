@@ -35,10 +35,10 @@ function setModeIcon(mode) {
         case "TRAM":
             img.src = "res/img/Tram.png";
             break;
-        case "TRAIN":
+        case "RAIL":
             img.src = "res/img/Train.png";
             break;
-        case "METRO":
+        case "SUBWAY":
             img.src = "res/img/Metro.png";
             break;
         case "BUS":
@@ -48,9 +48,13 @@ function setModeIcon(mode) {
             img = mode;
     }
     return img;
-
 }
 
+function getDate() {
+    var d = new Date();
+    var dateNow = d.getDay() + "."  + d.getMonth() +"." +  d.getFullYear();
+    return dateNow;
+}
 
 //Creates an user and tries to add it to the database. Gives out page alerts if problems arise.
 function createUser() {
@@ -127,20 +131,31 @@ function getDataForStop(stopName) {
 
 function cleanAndSaveName(stopName) {
     if (stopName != null) {
+        var editString = stopName;
+        editString.replace(/\s+/, "");
         stopName.replace(/\s+/, "");
-        stopName = stopName.substring(stopName.indexOf("/") + 2);
-        sessionStorage.setItem('stopNumber', stopName);
+        stopNumber = editString.substring(editString.indexOf("/") + 2);
+        textStopName = stopName.substring(0, stopName.indexOf("/"));
+        sessionStorage.setItem('stopNumber', stopNumber);
+        sessionStorage.setItem('textStopName', textStopName);
     }
 }
 
 function getStopTimeTable(cleanStopName) {
 
+    var topInfoDiv = document.createElement('div');
+    topInfoDiv.id = "topInfoDiv";
+    topInfoDiv.className = 'topInfoDiv';
+    document.getElementById('topDiv').appendChild(topInfoDiv);
 
+    var dateDiv = document.createElement('div');
+    dateDiv.id = "dateDiv";
+    dateDiv.className = 'dateDiv';
+    var dateString = getDate();
+    dateDiv.innerText = dateString;
+    document.getElementById('topDiv').appendChild(dateDiv);
 
-    var parentDiv = document.createElement('div');
-    parentDiv.id = "parentDiv";
-    parentDiv.className = 'parentDiv';
-    document.body.appendChild(parentDiv);
+    console.log(sessionStorage.getItem('textStopName'));
 
     var headerDiv = document.createElement('div');
     headerDiv.id = "headerDiv";
@@ -170,33 +185,7 @@ function getStopTimeTable(cleanStopName) {
     var timeTableDisplay = document.createElement('table');
     timeTableDisplay.id = "mainTable";
     document.getElementById('tableDiv').appendChild(timeTableDisplay);
-    /*
-    var tableHead = document.createElement('thead');
-    tableHead.id = "tableHead";
-    document.getElementById('mainTable').appendChild(tableHead);
 
-    var headRow = document.createElement('tr');
-    headRow.id = "headRow";
-    document.getElementById('tableHead').appendChild(headRow);
-
-    var lineNumberHeader = document.createElement('th');
-    lineNumberHeader.id = 'lineNumberHeader';
-    document.getElementById('headRow').appendChild(lineNumberHeader);
-    lineNumberHeader.innerText = "Linja";
-
-    var DestinationHeader = document.createElement('th');
-    DestinationHeader.id = 'DestinationHeader';
-    DestinationHeader.className = 'DestinationHeader';
-    DestinationHeader.style.textAlign = 'center';
-    document.getElementById('headRow').appendChild(DestinationHeader);
-    DestinationHeader.innerText = "M";
-
-    var DepartureHeader = document.createElement('th');
-    DepartureHeader.id = 'DepartureHeader';
-    DepartureHeader.style.cssFloat ='right';
-    document.getElementById('headRow').appendChild(DepartureHeader);
-    DepartureHeader.innerText = "Aika / Min";
-    */
     var tableBody = document.createElement('tbody');
     tableBody.id = "tableBody";
     document.getElementById('mainTable').appendChild(tableBody);
@@ -209,13 +198,10 @@ function getStopTimeTable(cleanStopName) {
 
             for (let i = 0; i < 10; i++) {
 
-
-
                 var tableRow = document.createElement('tr');
                 tableRow.id = "tableRow" + [i];
                 document.getElementById('tableBody').appendChild(tableRow);
                 //route number
-
 
                 var lineCell = document.createElement('td');
                 lineCell.id = 'lineCell' + [i];

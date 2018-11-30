@@ -12,46 +12,36 @@ table {
     width: 100%;
 }
 
-#headRow {
-    text-align: center;
-    border-bottom: 4px solid white;
-}
 
 tr {
     border-bottom: 3px solid white;
-}
-
-thead {
-    font-size: 200%;
-}
-
-tbody {
 }
 
 .lineCell {
     font-size: 3em;
     font-weight: bolder;
     padding-right: 0.5em;
+    margin: 1em;
+    width: 1em;
 }
 
 .routeCell h3 {
-    font-size: 1.75em;
-    margin: 0.5em;
+    font-size: 1.5em;
     font-weight: bold;
+    margin-top: 0.1em;
 }
 
 .routeCell p {
     color: lightgray;
     font-size: 1em;
-
 }
 
 .routeCell {
-    line-height: 0.25em;
-    max-width: 100%;
-    padding-left: 2em;
-    padding-right: 0em;
+    line-height: 0.1em;
+    max-width: 20em;
     text-align: center;
+    max-height: 1em;
+
 }
 
 .timeCell {
@@ -59,17 +49,21 @@ tbody {
     font-weight: bolder;
 }
 
-.imgCell{
- max-width: 1px;
-}
 
-img {
+
+.imgCell img {
     max-width: 3em;
     float: left;
 }
 .DestinationHeader {
     margin-right: auto;
     margin-left: auto;
+}
+
+#topDiv {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .headerDiv {
@@ -100,10 +94,12 @@ img {
 
 #timeDiv {
     float: right;
+    max-width: 100%;
 }
 
-.parentDiv {
+#parentDiv {
     width: 75%;
+    height: 100%;
     margin-right: auto;
     margin-left: auto;
 }
