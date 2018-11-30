@@ -1,0 +1,109 @@
+body {
+    background:url("../res/img/Ferry-bgnb.png");
+    background-repeat:no-repeat;
+    background-size: 100%;
+    font-family: sans-serif;
+    min-height: 100%;
+    color: white;
+}
+
+table {
+    color: white;
+    width: 100%;
+}
+
+#headRow {
+    text-align: center;
+    border-bottom: 4px solid white;
+}
+
+tr {
+    border-bottom: 3px solid white;
+}
+
+thead {
+    font-size: 200%;
+}
+
+tbody {
+}
+
+.lineCell {
+    font-size: 3em;
+    font-weight: bolder;
+    padding-right: 0.5em;
+}
+
+.routeCell h3 {
+    font-size: 1.75em;
+    margin: 0.5em;
+    font-weight: bold;
+}
+
+.routeCell p {
+    color: lightgray;
+    font-size: 1em;
+
+}
+
+.routeCell {
+    line-height: 0.25em;
+    max-width: 100%;
+    padding-left: 2em;
+    padding-right: 0em;
+    text-align: center;
+}
+
+.timeCell {
+    font-size: 3em;
+    font-weight: bolder;
+}
+
+.imgCell{
+ max-width: 1px;
+}
+
+img {
+    max-width: 3em;
+    float: left;
+}
+.DestinationHeader {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.headerDiv {
+    margin: auto;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-bottom: 4px solid white;
+    display: flex;
+    width: 70%;
+    position: center;
+}
+
+.tableDiv {
+    margin: auto;
+    width: 70%;
+}
+
+#lineDiv {
+    float: left;
+    margin: 3em;
+}
+
+#routeDiv {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#timeDiv {
+    float: right;
+}
+
+.parentDiv {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}

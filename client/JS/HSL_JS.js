@@ -10,6 +10,47 @@ function getSecSinceMidnight() {
     return SecSinceMidnight;
 }
 
+function addMinutesToTime(minutes) {
+    if (minutes >= 10) {
+        var date1 = new Date();
+        var date2 = new Date();
+        date2.setMinutes(date1.getMinutes() + minutes);
+        if (date2.getMinutes() < 10) {
+            var completeString = "0" + date2.getMinutes();
+        } else {
+            completeString = date2.getMinutes();
+        }
+        var finalDate = date2.getHours() + ":" + completeString;
+        return finalDate;
+    }
+    return minutes;
+}
+
+function setModeIcon(mode) {
+    var img = document.createElement('img');
+    switch (mode) {
+        case "FERRY":
+            img.src = "res/img/Ferry.png";
+            break;
+        case "TRAM":
+            img.src = "res/img/Tram.png";
+            break;
+        case "TRAIN":
+            img.src = "res/img/Train.png";
+            break;
+        case "METRO":
+            img.src = "res/img/Metro.png";
+            break;
+        case "BUS":
+            img.src = "res/img/Bus.png";
+            break;
+        default:
+            img = mode;
+    }
+    return img;
+
+}
+
 
 //Creates an user and tries to add it to the database. Gives out page alerts if problems arise.
 function createUser() {
@@ -86,39 +127,144 @@ function getDataForStop(stopName) {
 
 function cleanAndSaveName(stopName) {
     if (stopName != null) {
-        stopName.replace(/\s+/,"");
-        stopName = stopName.substring(stopName.indexOf("/")+2);
+        stopName.replace(/\s+/, "");
+        stopName = stopName.substring(stopName.indexOf("/") + 2);
         sessionStorage.setItem('stopNumber', stopName);
+    }
 }
 
-
-function displayStopTimeTable(cleanStopName) {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                var stopData = JSON.parse(xhttp.responseText);
-                console.log(stopData.data.stops[0]);
-                for (let i = 0; i < 10; i++) {
-                    //route number
-                    console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.shortName);
-
-                    //route desc.
-                    console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign);
-
-                    //route long desc.
-                    console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName);
-
-                    //route vehicle type
-                    console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
-
-                    //arrival time in minutes
-                    console.log("Arriving in " + (((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight())/60)|0) + " minutes");
-                }
+function getStopTimeTable(cleanStopName) {
 
 
+
+    var parentDiv = document.createElement('div');
+    parentDiv.id = "parentDiv";
+    parentDiv.className = 'parentDiv';
+    document.body.appendChild(parentDiv);
+
+    var headerDiv = document.createElement('div');
+    headerDiv.id = "headerDiv";
+    headerDiv.className = 'headerDiv';
+    document.getElementById('parentDiv').appendChild(headerDiv);
+
+    var tableDiv = document.createElement('div');
+    tableDiv.id = "tableDiv";
+    tableDiv.className = 'tableDiv';
+    document.getElementById('parentDiv').appendChild(tableDiv);
+
+    var lineDiv = document.createElement('div');
+    lineDiv.id = "headerDiv";
+    lineDiv.innerText = "Linja";
+    document.getElementById('headerDiv').appendChild(lineDiv);
+
+    var routeDiv = document.createElement('div');
+    routeDiv.id = "routeDiv";
+    routeDiv.innerText = "Määränpää / reitti";
+    document.getElementById('headerDiv').appendChild(routeDiv);
+
+    var timeDiv = document.createElement('div');
+    timeDiv.id = "timDiv";
+    timeDiv.innerText = "Aika / Min";
+    document.getElementById('headerDiv').appendChild(timeDiv);
+
+    var timeTableDisplay = document.createElement('table');
+    timeTableDisplay.id = "mainTable";
+    document.getElementById('tableDiv').appendChild(timeTableDisplay);
+    /*
+    var tableHead = document.createElement('thead');
+    tableHead.id = "tableHead";
+    document.getElementById('mainTable').appendChild(tableHead);
+
+    var headRow = document.createElement('tr');
+    headRow.id = "headRow";
+    document.getElementById('tableHead').appendChild(headRow);
+
+    var lineNumberHeader = document.createElement('th');
+    lineNumberHeader.id = 'lineNumberHeader';
+    document.getElementById('headRow').appendChild(lineNumberHeader);
+    lineNumberHeader.innerText = "Linja";
+
+    var DestinationHeader = document.createElement('th');
+    DestinationHeader.id = 'DestinationHeader';
+    DestinationHeader.className = 'DestinationHeader';
+    DestinationHeader.style.textAlign = 'center';
+    document.getElementById('headRow').appendChild(DestinationHeader);
+    DestinationHeader.innerText = "M";
+
+    var DepartureHeader = document.createElement('th');
+    DepartureHeader.id = 'DepartureHeader';
+    DepartureHeader.style.cssFloat ='right';
+    document.getElementById('headRow').appendChild(DepartureHeader);
+    DepartureHeader.innerText = "Aika / Min";
+    */
+    var tableBody = document.createElement('tbody');
+    tableBody.id = "tableBody";
+    document.getElementById('mainTable').appendChild(tableBody);
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var stopData = JSON.parse(xhttp.responseText);
+            console.log(stopData.data.stops[0]);
+
+            for (let i = 0; i < 10; i++) {
+
+
+
+                var tableRow = document.createElement('tr');
+                tableRow.id = "tableRow" + [i];
+                document.getElementById('tableBody').appendChild(tableRow);
+                //route number
+
+
+                var lineCell = document.createElement('td');
+                lineCell.id = 'lineCell' + [i];
+                lineCell.className = "lineCell";
+                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.shortName);
+                var lineNbr = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.shortName;
+                lineCell.innerHTML = lineNbr;
+                document.getElementById('tableRow'+[i]).appendChild(lineCell);
+
+                var imgCell = document.createElement('td');
+                imgCell.id = 'imgCell' + [i];
+                imgCell.className = "imgCell";
+                var lineType = setModeIcon(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
+                document.getElementById('tableRow'+[i]).appendChild(imgCell);
+                document.getElementById('imgCell'+[i]).appendChild(lineType);
+
+
+                var routeCell = document.createElement('td');
+                routeCell.id = 'routeCell' + [i];
+                routeCell.className = "routeCell";
+                var routeDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign;
+                var routeLongDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName;
+                routeCell.innerHTML = "<h3>" + routeDesc + "</h3>"+ "<br />" + "<p>" + routeLongDesc + "</p>";
+                document.getElementById('tableRow' + [i]).appendChild(routeCell);
+
+                var timeCell = document.createElement('td');
+                timeCell.id = 'timeCell' + [i];
+                timeCell.className = "timeCell";
+                timeCell.style.cssFloat = 'right';
+                var routeArrival = addMinutesToTime(((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0);
+                timeCell.innerHTML = routeArrival;
+                document.getElementById('tableRow' + [i]).appendChild(timeCell);
+
+
+                //route desc.
+                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign);
+
+                //route long desc.
+                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName);
+
+                //route vehicle type
+                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
+
+                //arrival time in minutes
+                console.log("Arriving in " + (((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0) + " minutes");
             }
         }
-        var data =  `{ stops(name: " ` + stopName + `") {
+    }
+    var data = `{ stops(name: " ` + cleanStopName + `") {
             stoptimesWithoutPatterns(numberOfDepartures:10) {
                 realtimeArrival
                 trip {
@@ -132,11 +278,11 @@ function displayStopTimeTable(cleanStopName) {
             }
         }
     }`
-        xhttp.open("POST", "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql", true);
-        xhttp.setRequestHeader("Content-type", "application/graphql");
-        xhttp.send(data);
-    }
+    xhttp.open("POST", "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql", true);
+    xhttp.setRequestHeader("Content-type", "application/graphql");
+    xhttp.send(data);
 }
+
 
 //Displays the login pop-up
 function displayLogin() {
