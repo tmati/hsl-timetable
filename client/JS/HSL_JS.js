@@ -56,6 +56,21 @@ function getDate() {
     return dateNow;
 }
 
+function gettime() {
+    var d = new Date();
+    if (d.getMinutes() < 10) {
+        var finalString = "0" + d.getMinutes();
+
+        var timeNow = d.getHours() + ":" + finalString;
+        return timeNow;
+    } else {
+        var timeNow = d.getHours() + ":" + d.getMinutes();
+        return timeNow;
+    }
+
+
+}
+
 //Creates an user and tries to add it to the database. Gives out page alerts if problems arise.
 function createUser() {
     var givenName = document.getElementById('username').value;
@@ -141,8 +156,25 @@ function cleanAndSaveName(stopName) {
     }
 }
 
-function getStopTimeTable(cleanStopName) {
+function deleteElements() {
+   deleteElement('topInfoDiv');
+    deleteElement('headerDiv');
+    deleteElement('tableDiv');
+    deleteElement('dateDiv');
+    deleteElement('stopDiv');
+    deleteElement('timeDiv');
+}
 
+function onLoad() {
+    getStopTimeTable(sessionStorage.getItem('stopNumber'));
+    setInterval(getStopTimeTable, 60000);
+    setInterval(deleteElements, 59998);
+
+}
+
+function getStopTimeTable(cleanStopName) {
+    console.log("running");
+    console.log(sessionStorage.getItem('stopNumber'))
     var topInfoDiv = document.createElement('div');
     topInfoDiv.id = "topInfoDiv";
     topInfoDiv.className = 'topInfoDiv';
@@ -154,6 +186,18 @@ function getStopTimeTable(cleanStopName) {
     var dateString = getDate();
     dateDiv.innerText = dateString;
     document.getElementById('topDiv').appendChild(dateDiv);
+
+    var StopDiv = document.createElement('div');
+    StopDiv.id = "stopDiv";
+    StopDiv.className = 'stopDiv';
+    StopDiv.innerText = sessionStorage.getItem('textStopName');
+    document.getElementById('topDiv').appendChild(StopDiv);
+
+    var timeDiv = document.createElement('div');
+    timeDiv.id = "timeDiv";
+    timeDiv.className = 'timeDiv';
+    timeDiv.innerText = gettime();
+    document.getElementById('topDiv').appendChild(timeDiv);
 
     console.log(sessionStorage.getItem('textStopName'));
 
@@ -196,7 +240,7 @@ function getStopTimeTable(cleanStopName) {
             var stopData = JSON.parse(xhttp.responseText);
             console.log(stopData.data.stops[0]);
 
-            for (let i = 0; i < 10; i++) {
+            for (var i = 0; i < 10; i++) {
 
                 var tableRow = document.createElement('tr');
                 tableRow.id = "tableRow" + [i];
@@ -247,10 +291,11 @@ function getStopTimeTable(cleanStopName) {
 
                 //arrival time in minutes
                 console.log("Arriving in " + (((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0) + " minutes");
+
             }
         }
     }
-    var data = `{ stops(name: " ` + cleanStopName + `") {
+    var data = `{ stops(name: " ` + sessionStorage.getItem('stopNumber') + `") {
             stoptimesWithoutPatterns(numberOfDepartures:10) {
                 realtimeArrival
                 trip {

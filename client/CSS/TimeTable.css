@@ -60,11 +60,25 @@ tr {
     margin-left: auto;
 }
 
+
+
 #topDiv {
-    width: 75%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 52%;
+    margin: auto;
+    border: 1.5px solid white;
+    font-size: 1.5em;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    position: center;
 }
+
+#stopDiv {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
 
 .headerDiv {
     margin: auto;
