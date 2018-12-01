@@ -22,8 +22,12 @@ function setModeIcon(mode) {
     return img;
 }
 
+function onLoad() {
+    getStopTimeTable(sessionStorage.getItem('stopNumber'));
+    setInterval(getStopTimeTable, 60000);
+    setInterval(deleteElements, 59998);
 
-
+}
 
 //Deletes the element given as parameter.
 function deleteElement(elementID) {
@@ -53,8 +57,6 @@ function addMinutesToTime(minutes) {
     return minutes;
 }
 
-
-
 function getDate() {
     var d = new Date();
     var dateNow = d.getDay() + "."  + d.getMonth() +"." +  d.getFullYear();
@@ -72,25 +74,6 @@ function gettime() {
         var timeNow = d.getHours() + ":" + d.getMinutes();
         return timeNow;
     }
-
-
-}
-
-
-
-
-
-
-function cleanAndSaveName(stopName) {
-    if (stopName != null) {
-        var editString = stopName;
-        editString.replace(/\s+/, "");
-        stopName.replace(/\s+/, "");
-        stopNumber = editString.substring(editString.indexOf("/") + 2);
-        textStopName = stopName.substring(0, stopName.indexOf("/"));
-        sessionStorage.setItem('stopNumber', stopNumber);
-        sessionStorage.setItem('textStopName', textStopName);
-    }
 }
 
 function deleteElements() {
@@ -100,11 +83,4 @@ function deleteElements() {
     deleteElement('dateDiv');
     deleteElement('stopDiv');
     deleteElement('timeDiv');
-}
-
-function onLoad() {
-    getStopTimeTable(sessionStorage.getItem('stopNumber'));
-    setInterval(getStopTimeTable, 60000);
-    setInterval(deleteElements, 59998);
-
 }

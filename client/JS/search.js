@@ -1,3 +1,27 @@
+function createLOGIN() {
+    let loginElement = document.createElement("div");
+    let loginButton = document.createElement('INPUT');
+    loginButton.setAttribute("type", "button");
+    loginButton.setAttribute("id", "loginBtn");
+    loginButton.setAttribute("value", "Login");
+    loginButton.addEventListener ("click", huhuu);
+    loginElement.appendChild(loginButton);
+    return loginElement;
+};
+
+function createLOGOUT(userName) {
+    let logoutElement = document.createElement("div");
+    logoutElement.setAttribute("id", "logoutForm");
+    document.getElementById('login').innerHTML = userName;
+    const logoutButton = document.createElement("INPUT");
+    logoutButton.setAttribute("type", "button");
+    logoutButton.setAttribute("id", "logoutBtn");
+    logoutButton.setAttribute("value", "Logout");
+    logoutButton.addEventListener ("click", logout);
+    logoutElement.appendChild(logoutButton);
+    return logoutElement;
+}
+
 // Displays the login
 function displayLogin() {
     document.getElementById("loginForm").classList.toggle("show");
@@ -22,23 +46,35 @@ function userlogin() {
     if (givenName == "" || givenName.length == 0 || givenName == null) {
         alert("No name given. Try again");
     } else {
-        alert(givenName);
-        const foundName = get();
-        //var foundName = Select from USER values WHERE Name = ('givenName');
-        if (foundName != null) {
-            document.getElementById('login').innerHTML =foundName;
-            var logoutParagraph = document.createElement('a');
-            logoutParagraph.id = "logoutBtn"
-            logoutParagraph.innerHTML = 'Logout'
-            logoutParagraph.onclick = function () {
-                document.getElementById('login').innerHTML = "LUO KÄYTTÄJÄ | KIRJAUDU";
-                deleteElement('logoutBtn');
-            }
-        } else {
-            alert("Name not found in database. Try again.");
-        }
+        getUser(givenName);
     }
 }
+
+function logout() {
+    alert("TODO: logout");
+}
+
+function searchSchedule() {
+    const stop = document.getElementById('searchField').value;
+    cleanAndSaveName(stop);
+    const url = window.location.href;
+    const request = url.substring(0, url.indexOf("#")) + "#timetable";
+    window.location.href = request;
+    onLoad();
+}
+
+function cleanAndSaveName(stopName) {
+    if (stopName != null) {
+        var editString = stopName;
+        editString.replace(/\s+/, "");
+        stopName.replace(/\s+/, "");
+        stopNumber = editString.substring(editString.indexOf("/") + 2);
+        textStopName = stopName.substring(0, stopName.indexOf("/"));
+        sessionStorage.setItem('stopNumber', stopNumber);
+        sessionStorage.setItem('textStopName', textStopName);
+    }
+}
+
 
 function showFavTable() {
     if (document.getElementById('login').innerHTML != "LUO KÄYTTÄJÄ | KIRJAUDU") {

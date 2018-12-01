@@ -141,12 +141,12 @@ function getStopTimeTable(cleanStopName) {
 }
 
 //Querying HSL API for transit stop information.
-function getDataForStop(stopName) {
+function getDataForStop() {
     //console.log(stopName);
+    const stopName = document.getElementById('searchField').value
     if (stopName != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+        xhttp.onload = function ()  {
                 // Typical action to be performed when the document is ready:
                 var json = JSON.parse(xhttp.responseText);
                 //console.log("JSON: " + json);
@@ -161,8 +161,6 @@ function getDataForStop(stopName) {
                 }
                 //console.log("namesArray: " + namesArray);
                 autocomplete(document.getElementById("searchField"), namesArray);
-            }
-
         }
         var data = `{   stops(name:  " ` + stopName + `") { 
     gtfsId 

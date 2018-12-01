@@ -3,7 +3,7 @@
     <!-- The Login form -->
     <div class="row">
         <div class="col-sm-7"></div>
-        <div class="col-sm-5 mt-3 text-center" >
+        <div class="col-sm-4 mt-3 text-center" >
             <p id="login" class="" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p>
             <div id="loginForm">
                 <!-- Login form. -->
@@ -12,8 +12,8 @@
                         <input class="form-control" id="username" type="text" name="username" placeholder="Anna nimi" required>
                     </div>
                     <div class="form-group">
-                        <input class="btn" type="submit" id="createBtn" value="Luo käyttäjä" onclick="createUser()">
-                        <input class="btn" type="submit" id="loginBtn" value="Kirjaudu" onclick="userlogin()">
+                        <input class="btn" type="button" id="createBtn" value="Luo käyttäjä" onclick="createUser()">
+                        <input class="btn" type="button" id="loginBtn" value="Kirjaudu" onclick="userlogin()">
                     </div>
                 </form>
             </div>
@@ -23,12 +23,12 @@
     <!-- The Search form -->
     <div class="row">
         <div class="col-sm-7 mx-auto mt-5 text-center" >
-            <form action="">
+            <form>
                 <div class="form-group">
                     <label class="" for="searchField">Etsi pysäkkiä nimellä:</label>
-                    <input class="form-control form-control-lg" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeyup=getDataForStop(document.getElementById('searchField').value)>
+                    <input class="form-control form-control-lg" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeyup=getDataForStop()>
                 </div>
-                <input class="btn" type="submit" onclick="window.location.href='http://localhost:63342/HSL-aikataulut/client/timetable.html'" onmouseover="cleanAndSaveName(document.getElementById('searchField').value)" value="Hae">
+                <input class="btn" type="button" onclick="searchSchedule()" value="Hae">
             </form>
         </div>
     </div>
