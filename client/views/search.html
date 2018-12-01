@@ -1,50 +1,52 @@
+<!-- The search page view. -->
 
-<!-- The view when opening the web page. -->
-<div>
-<!-- Setup for the login button and pop-up menu -->
-<div class="container-fluid" id="topnav">
-    <p id="login" class="login" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p>
-    <div id="dropDownMenu" class="container-fluid">
-
-        <!-- Login form. -->
-        <form novalidate>
-            <fieldset id="loginSet" onclick="getS">
-                <input id="username" type="text" name="username" placeholder="Anna nimi" required></br>
-                <input type="submit" class="credentials" id="createBtn" value="Luo käyttäjä" onclick="createUser()">
-                <input type="submit" class="credentials" id="loginBtn" value="Kirjaudu" onclick="userlogin()">
-            </fieldset>
-        </form>
-    </div>
-</div>
-
-<!-- The search elements in the center of the page. -->
-
-<div id="queryDiv" class="container-fluid">
-    <form action="" >
-        <h2>Etsi pysäkkiä nimellä:</h2>
-        <div class="container-fluid" id="autocomplete">
-            <textarea class="center-block" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeyup=getDataForStop(document.getElementById('searchField').value)></textarea>
+    <!-- The Login form -->
+    <div class="row">
+        <div class="col-sm-7"></div>
+        <div class="col-sm-5 mt-3 text-center" >
+            <p id="login" class="" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p>
+            <div id="loginForm">
+                <!-- Login form. -->
+                <form novalidate>
+                    <div class="form-group">
+                        <input class="form-control" id="username" type="text" name="username" placeholder="Anna nimi" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn" type="submit" id="createBtn" value="Luo käyttäjä" onclick="createUser()">
+                        <input class="btn" type="submit" id="loginBtn" value="Kirjaudu" onclick="userlogin()">
+                    </div>
+                </form>
+            </div>
         </div>
-
-    </form>
-
-</div>
-<div class="container-fluid" id="btnDiv">
-    <button id="SubmitBtn" onclick="window.location.href='http://localhost:63342/HSL-aikataulut/client/timetable.html'" onmouseover="cleanAndSaveName(document.getElementById('searchField').value)">Hae</button>
-</div>
-<div class="container-floating" id="favDiv" onclick="showFavTable()" >
-    <!-- The list of favourite stops for logged in users. Will appear on click. -->
-    <p id="favText" >SUOSIKKIPYSÄKIT</p>
-    <div class="favTable" id="favTable">
-    <h4>Pysäkin nimi</h4>
-    <table id="resultTable">
-        <tbody>
-        <tr>
-            <td>Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.
-            </td>
-        </tr>
-        </tbody>
-    </table>
     </div>
-</div>
-</div>
+
+    <!-- The Search form -->
+    <div class="row">
+        <div class="col-sm-7 mx-auto mt-5 text-center" >
+            <form action="">
+                <div class="form-group">
+                    <label class="" for="searchField">Etsi pysäkkiä nimellä:</label>
+                    <input class="form-control form-control-lg" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeyup=getDataForStop(document.getElementById('searchField').value)>
+                </div>
+                <input class="btn" type="submit" onclick="window.location.href='http://localhost:63342/HSL-aikataulut/client/timetable.html'" onmouseover="cleanAndSaveName(document.getElementById('searchField').value)" value="Hae">
+            </form>
+        </div>
+    </div>
+
+    <!-- The Favorites -->
+    <div class="row" id="favDiv" onclick="showFavTable()" >
+        <div class="col-sm-5 mx-auto mt-5">
+            <!-- The list of favourite stops for logged in users. Will appear on click. -->
+            <h3 id="favText" >SUOSIKKIPYSÄKIT</h3>
+            <h4>Pysäkin nimi</h4>
+            <table class="table" id="resultTable">
+                <tbody>
+                    <tr>
+                        <td scope="row">Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
