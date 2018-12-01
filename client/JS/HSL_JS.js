@@ -30,19 +30,19 @@ function setModeIcon(mode) {
     var img = document.createElement('img');
     switch (mode) {
         case "FERRY":
-            img.src = "res/img/Ferry.png";
+            img.src = "content/img/Ferry.png";
             break;
         case "TRAM":
-            img.src = "res/img/Tram.png";
+            img.src = "content/img/Tram.png";
             break;
         case "RAIL":
-            img.src = "res/img/Train.png";
+            img.src = "content/img/Train.png";
             break;
         case "SUBWAY":
-            img.src = "res/img/Metro.png";
+            img.src = "content/img/Metro.png";
             break;
         case "BUS":
-            img.src = "res/img/Bus.png";
+            img.src = "content/img/Bus.png";
             break;
         default:
             img = mode;
