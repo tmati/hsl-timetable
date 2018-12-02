@@ -55,6 +55,15 @@ Router.prototype = {
                     console.log(htmlName);
                     if (htmlName === "timetable.html") {
                         onLoad();
+                    } else if (htmlName === "search.html" && sessionStorage.getItem('userdata') != null) {
+                        closeID("loginInfo");
+                        const storage = sessionStorage.getItem('userdata');
+                        const user = JSON.parse(storage);
+                        document.getElementById('user').innerHTML = user.userName;
+                        openID("logoutForm");
+                        showFavTable();
+                    } else {
+                        showFavTable();
                     }
                 }
             };

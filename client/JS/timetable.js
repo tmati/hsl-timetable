@@ -26,8 +26,8 @@ function setModeIcon(mode) {
 }
 
 function onLoad() {
-    getStopTimeTable();
     timer = setInterval(getStopTimeTable, 60000);
+    getStopTimeTable();
 }
 
 function getStopTimeTable() {

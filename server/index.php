@@ -61,23 +61,30 @@ include 'database.php';
 
     function getStops($database, $userID) {
         $result = $database->select("favorites", "StopID", "UserID=".'"'.$userID.'"');
-        $array = array();
-        $data = null;
         if (mysqli_num_rows($result) > 0) {
+            $array = array();
+            $data = null;
             // output data of each row
             while($row = mysqli_fetch_assoc($result)) {
                 $name = $database->select("stops", "Name", "StopID=".'"'.$row["StopID"].'"');
                 $nameRow = mysqli_fetch_assoc($name);
+                #echo $nameRow["Name"];
                 $data = array(
                     "stopID" => $row["StopID"],
                     "stopName" => $nameRow["Name"]
                 );
                 #echo "id: " . $row["StopID"]. " name: ".$nameRow["Name"]." <br>";
                 array_push($array, $data);
+                #$array[] = $data;
+                #echo json_encode($data);
+                #echo implode(":", $data);
             }
+            #implode(" ", $array);
+            #echo json_encode($array);
+            #echo sizeof($array);
             return $array;
         } else {
-            echo 0;
+            return 0;
         }
         #$row = mysqli_fetch_assoc($result);
         #echo implode(",",$result);
@@ -125,10 +132,21 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
             #getStops($database, $parameters["userID"]);
             #echo $parameters["userID"];
             $stops = getStops($database, $parameters["ID"]);
-            if ($stops != 0) {
+            #echo json_encode($stops);
+            #echo sizeof($stops);
+           # echo json_encode($stops[1]);
+           # echo print_f ($stops);
+            if (sizeof($stops) > 0) {
+                #echo "jbkn";
+                #$data->"favorites"=$stops;
                 $data = array(
                     "favorites" => $stops
                 );
+                #echo $data['favorites'][1];
+                #echo array_values($data);
+                #echo implode(" ", $data);
+                #echo json_encode($stops[1]);
+                #echo json_encode($data['favorites']);
                 http_response_code(200); # OK
                 echo json_encode($data);
             }

@@ -6,18 +6,6 @@ function closeID(id) {
     document.getElementById(id).style.display = "none";
 }
 
-function createLOGIN() {
-    let loginElement = document.createElement("div");
-    let loginButton = document.createElement('INPUT');
-    loginButton.setAttribute("type", "button");
-    loginButton.setAttribute("id", "loginBtn");
-    loginButton.setAttribute("value", "Login");
-    loginButton.addEventListener ("click", huhuu);
-    loginElement.appendChild(loginButton);
-    return loginElement;
-};
-
-
 // Displays the login
 function displayLogin() {
     openID("loginForm");
@@ -50,6 +38,7 @@ function userlogin() {
 // Used to log out as an existing user.
 function logout() {
     sessionStorage.clear();
+    showFavTable();
     document.getElementById('user').innerHTML = "";
     closeID("logoutForm");
     openID("loginInfo");
@@ -63,8 +52,6 @@ function searchSchedule() {
     window.location.href = request;
 }
 
-
-
 function cleanAndSaveName(stopName) {
     if (stopName != null) {
         var editString = stopName;
@@ -77,21 +64,51 @@ function cleanAndSaveName(stopName) {
     }
 }
 
+function requestSchedule(i) {
+    var storage = sessionStorage.getItem('favorites');
+    var favorites = JSON.parse(storage);
+    sessionStorage.setItem('stopNumber', favorites[i].stopID);
+    sessionStorage.setItem('textStopName', favorites[i].stopName);
+    const url = window.location.href;
+    const request = url.substring(0, url.indexOf("#")) + "#timetable";
+    window.location.href = request;
+}
+
+function deleteFavorite(i) {
+    alert("TODO: implementation");
+}
+
 function showFavTable() {
     const favorites = sessionStorage.getItem('favorites');
+    const favoritesTableBody = document.getElementById('favoritesTableBody');
+    const tbody = document.createElement('tbody');
+    tbody.setAttribute("id", "favoritesTableBody");
     if (favorites != null) {
         // Select pysäkki from favourites where userID = document.getElementById('login').value;
-        const favoritesTableBody = document.getElementById('favoritesTableBody');
         const resultSet = JSON.parse(favorites);
-        const tbody = document.createElement('tbody');
         for (let i = 0; i < resultSet.length; i++) {
             const tr = document.createElement('tr');
             const td = document.createElement('td');
+            const td2 = document.createElement('td');
+            td2.setAttribute("class", "deleteFav")
+            const icon = document.createElement('i');
+            icon.setAttribute("class", "fas fa-minus")
+            const deleteBtn = document.createElement('button');
+            deleteBtn.setAttribute("onclick", "deleteFavorite(" + i +")");
+            deleteBtn.appendChild(icon);
+            td2.appendChild(deleteBtn);
             td.innerHTML = resultSet[i].stopName;
-            //td.onclick = displayStopTimeTable(this.innerHTML);
+            td.setAttribute("onclick", "requestSchedule(" + i + ")");
             tr.appendChild(td);
+            tr.appendChild(td2);
             tbody.appendChild(tr);
         }
-        favoritesTableBody.parentNode.replaceChild(tbody, favoritesTableBody);
+    } else {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.innerHTML = "Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.";
+        tr.appendChild(td);
+        tbody.appendChild(tr);
     }
+    favoritesTableBody.parentNode.replaceChild(tbody, favoritesTableBody);
 }
