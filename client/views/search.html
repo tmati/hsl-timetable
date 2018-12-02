@@ -4,9 +4,10 @@
     <div class="row">
         <div class="col-sm-7"></div>
         <div class="col-sm-4 mt-3 text-center" >
-            <p id="login" class="" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p>
-            <div id="loginForm">
-                <!-- Login form. -->
+            <div id="user"></div>
+            <div id="loginInfo"><p class="loginInfo" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p></div>
+            <!-- Login form -->
+            <div class="loginForm" id="loginForm">
                 <form novalidate>
                     <div class="form-group">
                         <input class="form-control" id="username" type="text" name="username" placeholder="Anna nimi" required>
@@ -15,6 +16,12 @@
                         <input class="btn" type="button" id="createBtn" value="Luo käyttäjä" onclick="createUser()">
                         <input class="btn" type="button" id="loginBtn" value="Kirjaudu" onclick="userlogin()">
                     </div>
+                </form>
+            </div>
+            <!-- Logout form -->
+            <div class="logoutForm" id="logoutForm">
+                <form>
+                    <input class="btn" type="button" id="logoutBtn" value="Kirjaudu ulos" onclick="logout()">
                 </form>
             </div>
         </div>
@@ -33,7 +40,7 @@
         </div>
     </div>
 
-    <!-- The Favorites -->
+    <!-- The Favorites table -->
     <div class="row" id="favDiv" onclick="showFavTable()" >
         <div class="col-sm-5 mx-auto mt-5">
             <!-- The list of favourite stops for logged in users. Will appear on click. -->

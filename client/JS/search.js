@@ -1,3 +1,11 @@
+function openID(id) {
+    document.getElementById(id).style.display = "block";
+}
+
+function closeID(id) {
+    document.getElementById(id).style.display = "none";
+}
+
 function createLOGIN() {
     let loginElement = document.createElement("div");
     let loginButton = document.createElement('INPUT');
@@ -9,22 +17,10 @@ function createLOGIN() {
     return loginElement;
 };
 
-function createLOGOUT(userName) {
-    let logoutElement = document.createElement("div");
-    logoutElement.setAttribute("id", "logoutForm");
-    document.getElementById('login').innerHTML = userName;
-    const logoutButton = document.createElement("INPUT");
-    logoutButton.setAttribute("type", "button");
-    logoutButton.setAttribute("id", "logoutBtn");
-    logoutButton.setAttribute("value", "Logout");
-    logoutButton.addEventListener ("click", logout);
-    logoutElement.appendChild(logoutButton);
-    return logoutElement;
-}
 
 // Displays the login
 function displayLogin() {
-    document.getElementById("loginForm").classList.toggle("show");
+    openID("loginForm");
 }
 
 //Creates an user and tries to add it to the database. Gives out page alerts if problems arise.

@@ -1,3 +1,11 @@
+.loginForm {
+    display: none;
+}
+
+.logoutForm {
+    display: none;
+}
+
 input[type=text] {
     border-radius: 1em;
     border-color: transparent;

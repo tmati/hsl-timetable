@@ -6,12 +6,13 @@ function getUser(name) {
                 const data = JSON.parse(xhttp.responseText);
                 const foundName = data.userName;
                 if (foundName != null) {
-                    const logout = createLOGOUT(foundName);
-                    document.getElementById('loginForm').parentNode.replaceChild(logout, document.getElementById('loginForm'));
+                    closeID("loginInfo");
+                    closeID("loginForm");
+                    document.getElementById('user').innerHTML = foundName;
+                    openID("logoutForm");
                     sessionStorage.setItem('userdata', xhttp.responseText);
                     getFavorites(data.userID);
                     showFavTable();
-
                 } else {
                     alert("Name not found in database. Try again.");
                 }
