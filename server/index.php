@@ -61,8 +61,27 @@ include 'database.php';
 
     function getStops($database, $userID) {
         $result = $database->select("favorites", "StopID", "UserID=".'"'.$userID.'"');
-        $row = mysqli_fetch_assoc($result);
-        echo $row["StopID"];
+        $array = array();
+        $data = null;
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                $name = $database->select("stops", "Name", "StopID=".'"'.$row["StopID"].'"');
+                $nameRow = mysqli_fetch_assoc($name);
+                $data = array(
+                    "stopID" => $row["StopID"],
+                    "stopName" => $nameRow["Name"]
+                );
+                #echo "id: " . $row["StopID"]. " name: ".$nameRow["Name"]." <br>";
+                array_push($array, $data);
+            }
+            return $array;
+        } else {
+            echo 0;
+        }
+        #$row = mysqli_fetch_assoc($result);
+        #echo implode(",",$result);
+        #return $row["StopID"];
     }
 
     function getUserID($database, $userName) {
@@ -105,7 +124,14 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
         else if ($request_method=="GET" && key($parameters) == "ID") {
             #getStops($database, $parameters["userID"]);
             #echo $parameters["userID"];
-            getStops($database, $parameters["ID"]);
+            $stops = getStops($database, $parameters["ID"]);
+            if ($stops != 0) {
+                $data = array(
+                    "favorites" => $stops
+                );
+                http_response_code(200); # OK
+                echo json_encode($data);
+            }
         }
         else if ($request_method=="GET" && key($parameters) == "user") {
             $userID = getUserID($database, $parameters["user"]);

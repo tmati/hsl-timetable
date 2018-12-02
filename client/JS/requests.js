@@ -8,6 +8,10 @@ function getUser(name) {
                 if (foundName != null) {
                     const logout = createLOGOUT(foundName);
                     document.getElementById('loginForm').parentNode.replaceChild(logout, document.getElementById('loginForm'));
+                    sessionStorage.setItem('userdata', xhttp.responseText);
+                    getFavorites(data.userID);
+                    showFavTable();
+
                 } else {
                     alert("Name not found in database. Try again.");
                 }
@@ -20,24 +24,13 @@ function getUser(name) {
 }
 
 // GET favorites request to the REST API.
-// TODO: NOT RIGHT IMPLEMENTION
-function getFovorites(id, element) {
+function getFavorites(id) {
     if (id != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                const data = JSON.parse(xhttp.responseText);
-                const jsonArr = json.data.stops;
-
-                var namesArray = [];
-                for (let i = 0; i < jsonArr.length; i++) {
-
-                    var tempString = jsonArr[i].name + " / " + jsonArr[i].code;
-                    namesArray.push(tempString);
-                }
-                //console.log("namesArray: " + namesArray);
-                autocomplete(document.getElementById("searchField"), namesArray);
-            }
+        xhttp.onload = function ()  {
+            const data = JSON.parse(xhttp.responseText);
+            const favorites = data.favorites;
+            sessionStorage.setItem('favorites', JSON.stringify(favorites));
         }
         const url = window.location.href;
         const request = url.substring(0, url.indexOf("client")) + "server/index.php?ID=" + id;

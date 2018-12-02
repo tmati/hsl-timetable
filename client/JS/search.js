@@ -76,18 +76,21 @@ function cleanAndSaveName(stopName) {
 }
 
 function showFavTable() {
-    if (document.getElementById('login').innerHTML != "LUO KÄYTTÄJÄ | KIRJAUDU") {
-        /*Select pysäkki from favourites where userID = document.getElementById('login').value;
-        for (var i = 0; i < resultSet.length; i++) {
-            var tr = document.createElement('tr');
-            var td = document.createElement('td');
-            tr.id = "Row" + [i];
-            td.id = "TD" + [i];
-            td.innerHTML = resultSet[i];
-            td.onclick = displayStopTimeTable(this.innerHTML);
+    const favorites = sessionStorage.getItem('favorites');
+    if (favorites != null) {
+        // Select pysäkki from favourites where userID = document.getElementById('login').value;
+        const favoritesTableBody = document.getElementById('favoritesTableBody');
+        const resultSet = JSON.parse(favorites);
+        const tbody = document.createElement('tbody');
+        for (let i = 0; i < resultSet.length; i++) {
+            const tr = document.createElement('tr');
+            const td = document.createElement('td');
+            td.innerHTML = resultSet[i].stopName;
+            //td.onclick = displayStopTimeTable(this.innerHTML);
             tr.appendChild(td);
-            resultTable.appendChild(tr);        }
-    */
+            tbody.appendChild(tr);
+        }
+        favoritesTableBody.parentNode.replaceChild(tbody, favoritesTableBody);
     }
-    document.getElementById('favTable').style.display = 'block';
+    //#document.getElementById('favTable').style.display = 'block';
 }
