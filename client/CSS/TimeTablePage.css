@@ -8,7 +8,6 @@ tr {
 
 .lineCell {
     font-size: 3em;
-    font-weight: bolder;
 }
 
 .imgCell img {
@@ -31,6 +30,5 @@ tr {
 
 .timeCell {
     font-size: 3em;
-    font-weight: bolder;
     text-align: right;
 }
