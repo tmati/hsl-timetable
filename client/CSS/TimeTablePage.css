@@ -1,34 +1,64 @@
 #topDiv {
+    font-size: 2em;
+}
+
+#stopDiv {
+    text-align: center;
+}
+
+#timeDiv {
+    text-align: right;
+}
+
+thead {
     font-size: 1.5em;
 }
+
+#routeHeader {
+    text-align: center;
+}
+
+#timeHeader {
+    text-align: right;
+}
+#timeDiv {
+    margin-right: 0;
+}
+
 
 tr {
     border-bottom: 3px solid white;
 }
 
 .lineCell {
-    font-size: 3em;
+    font-size: 4em;
 }
 
 .imgCell img {
-    max-width: 3em;
+    max-width: 4em;
+    padding-top: 1em;
+}
+
+.imgCell {
 }
 
 .routeCell {
-    line-height: 0.1em;
+    line-height: 0.4em;
     text-align: center;
 }
 
 .routeCell p {
     color: lightgray;
+    font-size: 1.5em;
 }
 
 .routeCell h3 {
-    font-size: 1.5em;
+    margin-top: 0.5em;
+    font-size: 2em;
     font-weight: bold;
 }
 
 .timeCell {
-    font-size: 3em;
+    font-size: 4em;
     text-align: right;
 }

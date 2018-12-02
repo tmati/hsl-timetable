@@ -1,3 +1,8 @@
+/**
+ * Gets the corresponding image for the received transit mode.
+ * @param mode The transit type from the request.
+ * @returns {string} The relative address of the correct image.
+ */
 function setModeIcon(mode) {
     //var img = document.createElement('img');
     let image = "#";
@@ -23,11 +28,17 @@ function setModeIcon(mode) {
     return image;
 }
 
+/**
+ * Gets the stops timetable and starts updating it once every minute.
+ */
 function onLoad() {
     getStopTimeTable();
     setInterval(getStopTimeTable, 60000);
 }
 
+/**
+ * The function that gets all the data for the timetable.
+ */
 function getStopTimeTable() {
     console.log("running");
     console.log(sessionStorage.getItem('stopNumber'));
@@ -35,7 +46,7 @@ function getStopTimeTable() {
 
     const dateString = getDate();
     document.getElementById('dateDiv').innerText = dateString;
-    document.getElementById('stopDiv').innerText = sessionStorage.getItem('textStopName');
+    document.getElementById('stopDiv').innerHTML = "<center>" + sessionStorage.getItem('textStopName') + "</center>";
     document.getElementById('timeDiv').innerText = gettime();
 
     getDataForTimetable();
@@ -71,7 +82,18 @@ function addMinutesToTime(minutes) {
 
 function getDate() {
     var d = new Date();
-    var dateNow = d.getDay() + "."  + d.getMonth() +"." +  d.getFullYear();
+    var dd = d.getDate();
+    var mm = d.getMonth()+1; //January is 0!
+
+    if(dd<10) {
+        dd = '0'+dd
+    }
+
+    if(mm<10) {
+        mm = '0'+mm
+    }
+
+    var dateNow = dd + '.' + mm + '.' + d.getFullYear();
     return dateNow;
 }
 
