@@ -1,3 +1,7 @@
+i {
+    font-size: 150%;
+}
+
 #topDiv {
     font-size: 1.5em;
 }
@@ -32,3 +36,4 @@ tr {
     font-size: 3em;
     text-align: right;
 }
+

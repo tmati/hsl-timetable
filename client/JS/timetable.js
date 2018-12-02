@@ -1,3 +1,5 @@
+var timer = null;
+
 function setModeIcon(mode) {
     //var img = document.createElement('img');
     let image = "#";
@@ -25,7 +27,7 @@ function setModeIcon(mode) {
 
 function onLoad() {
     getStopTimeTable();
-    setInterval(getStopTimeTable, 60000);
+    timer = setInterval(getStopTimeTable, 60000);
 }
 
 function getStopTimeTable() {
@@ -39,6 +41,16 @@ function getStopTimeTable() {
     document.getElementById('timeDiv').innerText = gettime();
 
     getDataForTimetable();
+}
+
+function backLink() {
+    if (timer != null) {
+        clearInterval(timer);
+        timer = null;
+    }
+    const url = window.location.href;
+    const request = url.substring(0, url.indexOf("#")) + "#search";
+    window.location.href = request;
 }
 
 //Deletes the element given as parameter.

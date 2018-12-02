@@ -37,7 +37,7 @@ function createUser() {
     document.getElementById('login').style.display = 'none';
 }
 
-//Used to log in as an existing user. Gives out page alerts if user with given name can't be found.
+// Used to log in as an existing user. Gives out page alerts if user with given name can't be found.
 function userlogin() {
     const givenName = document.getElementById('username').value;
     if (givenName == "" || givenName.length == 0 || givenName == null) {
@@ -47,8 +47,12 @@ function userlogin() {
     }
 }
 
+// Used to log out as an existing user.
 function logout() {
-    alert("TODO: logout");
+    sessionStorage.clear();
+    document.getElementById('user').innerHTML = "";
+    closeID("logoutForm");
+    openID("loginInfo");
 }
 
 function searchSchedule() {
@@ -58,6 +62,8 @@ function searchSchedule() {
     const request = url.substring(0, url.indexOf("#")) + "#timetable";
     window.location.href = request;
 }
+
+
 
 function cleanAndSaveName(stopName) {
     if (stopName != null) {
@@ -88,5 +94,4 @@ function showFavTable() {
         }
         favoritesTableBody.parentNode.replaceChild(tbody, favoritesTableBody);
     }
-    //#document.getElementById('favTable').style.display = 'block';
 }

@@ -3,7 +3,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     font-family: Arial, sans-serif;
-    font-size: 6px;
+    font-size: 12px;
     font-weight: bold;
     color: white;
     position: absolute;
@@ -16,21 +16,18 @@ body {
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
     body {
-        font-size: 8px;
     }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     body {
-        font-size: 10px;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     body {
-        font-size: 12px;
     }
 }
 
