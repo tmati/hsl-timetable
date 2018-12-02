@@ -20,6 +20,7 @@ function getUser(name) {
 }
 
 // GET favorites request to the REST API.
+// TODO: NOT RIGHT IMPLEMENTION
 function getFovorites(id, element) {
     if (id != null) {
         const xhttp = new XMLHttpRequest();
@@ -45,28 +46,16 @@ function getFovorites(id, element) {
     }
 }
 
-// POST request to the REST API.
-function makePostRequest(data) {
-    if (data != null) {
+// POST user request to the REST API.
+function postUser(name) {
+    if (name != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4) {
-                const data = JSON.parse(xhttp.responseText);
-                var jsonArr = json.data.stops;
-
-                var namesArray = [];
-                for (let i = 0; i < jsonArr.length; i++) {
-
-                    var tempString = jsonArr[i].name + " / " + jsonArr[i].code;
-                    namesArray.push(tempString);
-                }
-                //console.log("namesArray: " + namesArray);
-                autocomplete(document.getElementById("searchField"), namesArray);
-            }
-
+        xhttp.onload = function ()  {
+                console.log("Käyttäjä lisätty.");
         }
+        const data = '{ "name" : "' + name + '" }';
         const url = window.location.href;
-        const request = url.substring(0, url.indexOf("client")) + "server/index.php?" + parameters;
+        const request = url.substring(0, url.indexOf("client")) + "server/index.php?";
         xhttp.open("POST", request, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(data);

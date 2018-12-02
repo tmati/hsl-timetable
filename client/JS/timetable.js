@@ -18,7 +18,7 @@ function setModeIcon(mode) {
             image = "./content/img/Bus.png";
             break;
         default:
-            image = mode;
+            image = "#";
     }
     return image;
 }
@@ -40,9 +40,6 @@ function getStopTimeTable() {
 
     getDataForTimetable();
 }
-
-
-
 
 //Deletes the element given as parameter.
 function deleteElement(elementID) {
@@ -82,20 +79,10 @@ function gettime() {
     var d = new Date();
     if (d.getMinutes() < 10) {
         var finalString = "0" + d.getMinutes();
-
         var timeNow = d.getHours() + ":" + finalString;
         return timeNow;
     } else {
         var timeNow = d.getHours() + ":" + d.getMinutes();
         return timeNow;
     }
-}
-
-function deleteElements() {
-    deleteElement('topInfoDiv');
-    deleteElement('headerDiv');
-    deleteElement('tableDiv');
-    deleteElement('dateDiv');
-    deleteElement('stopDiv');
-    deleteElement('timeDiv');
 }

@@ -97,6 +97,7 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
 
     	if ($request_method=="POST" && array_key_exists('name', $body)) {
     		postUser($database, $body->{'name'});
+            http_response_code(200); # OK
     	}
         else if ($request_method=="POST" && array_key_exists('userID', $body) && array_key_exists('stopID', $body)) {
             postFavoriteStop($database, $body->{'userID'}, $body->{'stopID'}, $body->{'stopName'});
@@ -113,9 +114,9 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
                     "userID" => $userID,
                     "userName" => $parameters["user"]
                 );
+                http_response_code(200); # OK
+                echo json_encode($data);
             }
-            http_response_code(200); # OK
-            echo json_encode($data);
         } else {
             http_response_code(405); # Method not allowed
             echo "Ei ole komento";

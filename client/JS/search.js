@@ -35,6 +35,7 @@ function createUser() {
         document.getElementById('dropDownMenu').style.display = 'none';
     } else {
         alert(givenName);
+        postUser(givenName);
         //Insert into USER values ('givenName');
     }
     document.getElementById('login').style.display = 'none';
