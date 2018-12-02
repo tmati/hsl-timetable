@@ -1,0 +1,41 @@
+body {
+    background: url("../content/img/Ferry-bgnb.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    font-size: 6px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+/* Limits from Bootsrap */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    body {
+        font-size: 8px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    body {
+        font-size: 10px;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    body {
+        font-size: 12px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    body {
+    }
+}

@@ -1,0 +1,63 @@
+<!-- The search page view. -->
+
+    <!-- The Login form -->
+    <div class="row">
+        <div class="col-sm-7"></div>
+        <div class="col-sm-4 mt-3 text-center" >
+            <div id="user"></div>
+            <div id="loginInfo"><p class="loginInfo" onclick="displayLogin()">LUO KÄYTTÄJÄ | KIRJAUDU</p></div>
+            <!-- Login form -->
+            <div class="loginForm" id="loginForm">
+                <form novalidate>
+                    <div class="form-group">
+                        <input class="form-control" id="username" type="text" name="username" placeholder="Anna nimi" required>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn" type="button" id="createBtn" value="Luo käyttäjä" onclick="createUser()">
+                        <input class="btn" type="button" id="loginBtn" value="Kirjaudu" onclick="userlogin()">
+                    </div>
+                </form>
+            </div>
+            <!-- Logout form -->
+            <div class="logoutForm" id="logoutForm">
+                <form>
+                    <input class="btn" type="button" id="logoutBtn" value="Kirjaudu ulos" onclick="logout()">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Search form -->
+    <div class="row">
+        <div class="col-sm-7 mx-auto mt-5 text-center" >
+            <form>
+                <div class="form-group">
+                    <label class="" for="searchField">Etsi pysäkkiä nimellä:</label>
+                    <input class="form-control form-control-lg" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeyup=getDataForStop()>
+                </div>
+                <input class="btn" type="button" onclick="searchSchedule()" value="Hae">
+            </form>
+        </div>
+    </div>
+
+    <!-- The Favorites table -->
+    <div class="row" id="favDiv" onclick="showFavTable()" >
+        <div class="col-sm-5 mx-auto mt-5">
+            <!-- The list of favourite stops for logged in users. Will appear on click. -->
+            <h3 id="favText" >SUOSIKKIPYSÄKIT</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Pysäkin nimi</th>
+                    </tr>
+                </thead>
+                <tbody id="favoritesTableBody">
+                    <tr>
+                        <td scope="row">Et ole kirjautuneena sisään. Kirjaudu sisään tai luo käyttäjä käyttääksesi suosikkipysäkit - toimintoa.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
