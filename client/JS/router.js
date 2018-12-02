@@ -52,6 +52,10 @@ Router.prototype = {
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     scope.rootElement.innerHTML = this.responseText;
+                    console.log(htmlName);
+                    if (htmlName === "timetable.html") {
+                        onLoad();
+                    }
                 }
             };
             xhttp.open('GET', url, true);

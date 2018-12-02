@@ -1,33 +1,48 @@
 function setModeIcon(mode) {
-    var img = document.createElement('img');
+    //var img = document.createElement('img');
+    let image = "#";
     switch (mode) {
         case "FERRY":
-            img.src = "content/img/Ferry.png";
+            image = "./content/img/Ferry.png";
             break;
         case "TRAM":
-            img.src = "content/img/Tram.png";
+            image = "./content/img/Tram.png";
             break;
         case "RAIL":
-            img.src = "content/img/Train.png";
+            image = "./content/img/Train.png";
             break;
         case "SUBWAY":
-            img.src = "content/img/Metro.png";
+            image = "content/img/Metro.png";
             break;
         case "BUS":
-            img.src = "content/img/Bus.png";
+            image = "./content/img/Bus.png";
             break;
         default:
-            img = mode;
+            image = mode;
     }
-    return img;
+    return image;
 }
 
 function onLoad() {
-    getStopTimeTable(sessionStorage.getItem('stopNumber'));
+    getStopTimeTable();
     setInterval(getStopTimeTable, 60000);
-    setInterval(deleteElements, 59998);
-
 }
+
+function getStopTimeTable() {
+    console.log("running");
+    console.log(sessionStorage.getItem('stopNumber'));
+    console.log(sessionStorage.getItem('textStopName'));
+
+    const dateString = getDate();
+    document.getElementById('dateDiv').innerText = dateString;
+    document.getElementById('stopDiv').innerText = sessionStorage.getItem('textStopName');
+    document.getElementById('timeDiv').innerText = gettime();
+
+    getDataForTimetable();
+}
+
+
+
 
 //Deletes the element given as parameter.
 function deleteElement(elementID) {

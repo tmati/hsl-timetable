@@ -60,7 +60,6 @@ function searchSchedule() {
     const url = window.location.href;
     const request = url.substring(0, url.indexOf("#")) + "#timetable";
     window.location.href = request;
-    onLoad();
 }
 
 function cleanAndSaveName(stopName) {
@@ -74,7 +73,6 @@ function cleanAndSaveName(stopName) {
         sessionStorage.setItem('textStopName', textStopName);
     }
 }
-
 
 function showFavTable() {
     if (document.getElementById('login').innerHTML != "LUO KÄYTTÄJÄ | KIRJAUDU") {
