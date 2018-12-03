@@ -25,11 +25,12 @@ class Database {
         $db = $this->connect();
         $stmt = $db->prepare("INSERT INTO ".$table." (".$values.") VALUES (?)");
         //$sql = "INSERT INTO ".$table." (".$values.") VALUES ($data)";
-        $stmt->bind_param(s, $insertData);
+        $stmt->bind_param("s", $insertData);
 
         $stmt->execute();
 
-        if ($db->query($stmt) === TRUE) {
+        //if ($db->query($stmt) === TRUE) {
+        if($stmt->execute() === true) {
             echo "New user created successfully";
         } else {
             echo "Error: " . $stmt . "<br>" . $db->error;
