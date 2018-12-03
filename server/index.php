@@ -61,18 +61,21 @@ include 'database.php';
 
     function getStops($database, $userID) {
         $result = $database->selectStops("favourites", "StopID",$userID);
+        if ($result->num_rows > 0) {
         $array = array();
         $data = null;
-        if ($result->num_rows > 0) {
+
             // output data of each row
-            while($row = mysqli_fetch_assoc($result)) {
-                $name = $database->selectStopNames("stops", "Name", "StopID=".'"'.$row["StopID"].'"');
-                $nameRow = mysqli_fetch_assoc($name);
+            while($row = $result->fetch_assoc()) {
+                while($nameRow = $database->selectStopNames("stops", "Name", "StopID=".'"'.$row["StopID"].'"')) {
+                    echo "nimi ".$nameRow["Name"];
+                }
+
                 $data = array(
                     "stopID" => $row["StopID"],
                     "stopName" => $nameRow["Name"]
                 );
-                #echo "id: " . $row["StopID"]. " name: ".$nameRow["Name"]." <br>";
+                echo "id: " . $row["StopID"]. " name: ".$nameRow["Name"]." <br>";
                 array_push($array, $data);
             }
             return $array;

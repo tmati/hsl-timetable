@@ -102,11 +102,11 @@ class Database {
             var_dump($result);
             return $result;
         } else {
-            echo "pieleen meni";
+            echo "pieleen";
             #echo "Error: " . $sql . "<br>" . $db->error;
             echo $stmt->error;
         }
-        //$stmt->close;
+        $stmt->close;
         $db->close();
     }
 
