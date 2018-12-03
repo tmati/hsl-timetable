@@ -15,7 +15,7 @@ include 'database.php';
         }
         $resource = array();
         $resource = explode('/', $resource_string);
-        for($i=0; $i <=3; $i++){
+        for($i=0; $i <=1; $i++){
         	array_shift($resource);
 		}
         //array_shift($resource);
@@ -55,18 +55,18 @@ include 'database.php';
 	}
 
 	function postFavoriteStop($database, $userID, $stopID, $stopName) {
-        $database->insert("stops", "Name, StopID", "'".$stopName."', '".$stopID."'");
-        $result = $database->insert("favorites", "UserID, StopID", "'".$userID."', '".$stopID."'");
+        $database->StopsInsert("stops", "Name, StopID", $stopName,$stopID);
+        $result = $database->multiParamInsert("favourites", "UserID, StopID", $userID ,$stopID);
     }
 
     function getStops($database, $userID) {
-        $result = $database->select("favorites", "StopID", "UserID=".'"'.$userID.'"');
+        $result = $database->selectStops("favourites", "StopID",$userID);
         $array = array();
         $data = null;
-        if (mysqli_num_rows($result) > 0) {
+        if ($result->num_rows > 0) {
             // output data of each row
             while($row = mysqli_fetch_assoc($result)) {
-                $name = $database->select("stops", "Name", "StopID=".'"'.$row["StopID"].'"');
+                $name = $database->selectStopNames("stops", "Name", "StopID=".'"'.$row["StopID"].'"');
                 $nameRow = mysqli_fetch_assoc($name);
                 $data = array(
                     "stopID" => $row["StopID"],

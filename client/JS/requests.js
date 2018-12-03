@@ -12,13 +12,12 @@ function getUser(name) {
                     openID("logoutForm");
                     sessionStorage.setItem('userdata', xhttp.responseText);
                     getFavorites(data.userID);
-                    showFavTable();
+
                 } else {
                     alert("Name not found in database. Try again.");
                 }
         }
-        const url = window.location.href;
-        const request = url.substring(0, url.indexOf("client")) + "server/index.php?user=" + name;
+        const request = "http://localhost/server/index.php?user=" + name;
         xhttp.open("GET", request, true);
         xhttp.send();
     }
@@ -32,9 +31,9 @@ function getFavorites(id) {
             const data = JSON.parse(xhttp.responseText);
             const favorites = data.favorites;
             sessionStorage.setItem('favorites', JSON.stringify(favorites));
+            showFavTable();
         }
-        const url = window.location.href;
-        const request = url.substring(0, url.indexOf("client")) + "server/index.php?ID=" + id;
+        const request = "http://localhost/server/index.php?ID=" + id;
         xhttp.open("GET", request, true);
         xhttp.send();
     }
@@ -48,8 +47,7 @@ function postUser(name) {
                 console.log("Käyttäjä lisätty.");
         }
         const data = '{ "name" : "' + name + '" }';
-        const url = window.location.href;
-        const request = url.substring(0, url.indexOf("client")) + "server/index.php?";
+        const request = "http://localhost/server/index.php";
         xhttp.open("POST", request, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(data);

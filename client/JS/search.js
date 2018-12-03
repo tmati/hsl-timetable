@@ -34,7 +34,7 @@ function createUser() {
         postUser(givenName);
         //Insert into USER values ('givenName');
     }
-    document.getElementById('login').style.display = 'none';
+    document.getElementById('loginInfo').style.display = 'none';
 }
 
 //Used to log in as an existing user. Gives out page alerts if user with given name can't be found.
