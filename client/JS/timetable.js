@@ -1,4 +1,13 @@
 /**
+ * Hides the icon and adds the currently displayed stop into the users favorite list.
+ */
+
+function hideIconAddFav() {
+    document.getElementById('iconDiv').style.display = 'none';
+    postFavoriteStop(sessionStorage.getItem('userdata').userName,sessionStorage.getItem('stopNumber'), sessionStorage.getItem('textStopName'));
+}
+
+/**
  * Gets the corresponding image for the received transit mode.
  * @param mode The transit type from the request.
  * @returns {string} The relative address of the correct image.
@@ -46,24 +55,36 @@ function getStopTimeTable() {
 
     const dateString = getDate();
     document.getElementById('dateDiv').innerText = dateString;
-    document.getElementById('stopDiv').innerHTML = "<center>" + sessionStorage.getItem('textStopName') + "</center>";
+    document.getElementById('stopDiv').innerHTML = sessionStorage.getItem('textStopName');
     document.getElementById('timeDiv').innerText = gettime();
 
     getDataForTimetable();
 }
 
-//Deletes the element given as parameter.
+/**
+ * Deletes the element given as parameter
+ * @param elementID the element to delete
+ */
 function deleteElement(elementID) {
     var toDelete = document.getElementById(elementID);
     toDelete.parentNode.removeChild(toDelete);
 }
 
+/**
+ * Gets the current time as seconds since midnight.
+ * @returns {number} Seconds elapsed today.
+ */
 function getSecSinceMidnight() {
     var midnight = new Date(), now = new Date();
     var SecSinceMidnight = (now - midnight.setHours(0,0,0,0))/1000;
     return SecSinceMidnight;
 }
 
+/**
+ * Adds a zero in front of the getMinutes function if it returns less than 10
+ * @param minutes the value to check
+ * @returns {*} time in hours:minutes
+ */
 function addMinutesToTime(minutes) {
     if (minutes >= 10) {
         var date1 = new Date();
@@ -80,6 +101,10 @@ function addMinutesToTime(minutes) {
     return minutes;
 }
 
+/**
+ * Gets today's date.
+ * @returns {string}
+ */
 function getDate() {
     var d = new Date();
     var dd = d.getDate();
@@ -97,6 +122,10 @@ function getDate() {
     return dateNow;
 }
 
+/**
+ * Gets hours and minutes.
+ * @returns {string}
+ */
 function gettime() {
     var d = new Date();
     if (d.getMinutes() < 10) {

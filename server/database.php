@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Class Database constructor
+ */
 class Database {
     public function __construct($server, $user, $password, $database) {
         $this->host = $server;
@@ -12,11 +16,19 @@ class Database {
         return $this->host;
     }
 
-    // Create connection
+    /**
+     * @return mysqli New connection
+     */
     protected function connect() {
         return new mysqli($this->host, $this->username, $this->password, $this->database);
     }
 
+    /**
+     * Inserts a name feed into the database using PreparedStatement.
+     * @param $table the tabel to use
+     * @param $values the values to add
+     * @param $data the data to add.
+     */
     public function insert($table, $values, $data) {
         echo "lisays";
         //TOIMII POSTMANISSA
@@ -39,6 +51,13 @@ class Database {
         $db->close();
     }
 
+    /**
+     * Another form of required PreparedStatement insert queries.
+     * @param $table
+     * @param $values
+     * @param $stopName
+     * @param $stopID
+     */
     public function StopsInsert($table, $values, $stopName, $stopID) {
         //TOIMII POSTMANISSA
         echo "lisays";
@@ -61,6 +80,13 @@ class Database {
         $db->close();
     }
 
+    /**
+     * PreparedStatement insert for userID and StopID
+     * @param $table
+     * @param $values
+     * @param $userID
+     * @param $stopID
+     */
     public function multiParamInsert($table, $values, $userID, $stopID) {
         echo "lisays";
         //TOIMII POSTMANISSA
@@ -82,7 +108,13 @@ class Database {
         $db->close();
     }
 
-
+    /**
+     * PreparedStatement query for selecting an users favourited stops from the database.
+     * @param $table
+     * @param $values
+     * @param $ehto
+     * @return bool|mysqli_result
+     */
     public function selectStops($table, $values, $ehto) {
         #echo "Valitse ";
         $selectEhto = $ehto;
@@ -110,6 +142,13 @@ class Database {
         $db->close();
     }
 
+    /**
+     * PreparedStatement query to select names for the users' favorite stops.
+     * @param $table
+     * @param $values
+     * @param $ehto
+     * @return bool|mysqli_result
+     */
     public function selectStopNames($table, $values, $ehto) {
         //TOIMII MELKEIN: KATSO POSTMAN
         #echo "Valitse ";

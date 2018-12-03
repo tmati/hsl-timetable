@@ -3,7 +3,7 @@
 }
 
 #stopDiv {
-    text-align: center;
+    text-align: right;
 }
 
 #timeDiv {
@@ -61,4 +61,8 @@ tr {
 .timeCell {
     font-size: 4em;
     text-align: right;
+}
+#iconDiv {
+    max-width: 1em;
+
 }

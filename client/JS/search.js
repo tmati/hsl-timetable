@@ -17,13 +17,16 @@ function createLOGIN() {
     return loginElement;
 };
 
-
-// Displays the login
+/**
+ * Displays the login form
+ */
 function displayLogin() {
     openID("loginForm");
 }
 
-//Creates an user and tries to add it to the database. Gives out page alerts if problems arise.
+/**
+ * Creates a named user and tries to add it to the database.
+ */
 function createUser() {
     const givenName = document.getElementById('username').value;
     if (givenName == "" || givenName.length == 0 || givenName == null) {
@@ -32,12 +35,13 @@ function createUser() {
     } else {
         alert(givenName);
         postUser(givenName);
-        //Insert into USER values ('givenName');
     }
     document.getElementById('loginInfo').style.display = 'none';
 }
 
-//Used to log in as an existing user. Gives out page alerts if user with given name can't be found.
+/**
+ * Used to log in as an existing user.
+ */
 function userlogin() {
     const givenName = document.getElementById('username').value;
     if (givenName == "" || givenName.length == 0 || givenName == null) {
@@ -47,10 +51,16 @@ function userlogin() {
     }
 }
 
+/**
+ * Logout
+ */
 function logout() {
     alert("TODO: logout");
 }
 
+/**
+ *
+ */
 function searchSchedule() {
     const stop = document.getElementById('searchField').value;
     cleanAndSaveName(stop);
@@ -59,6 +69,10 @@ function searchSchedule() {
     window.location.href = request;
 }
 
+/**
+ * Modifies search field input to match HSL API query requirements.
+ * @param stopName the input from the search field.
+ */
 function cleanAndSaveName(stopName) {
     if (stopName != null) {
         var editString = stopName;
@@ -71,6 +85,9 @@ function cleanAndSaveName(stopName) {
     }
 }
 
+/**
+ * Displays a user's favourite stops in a table.
+ */
 function showFavTable() {
     const favorites = sessionStorage.getItem('favorites');
     if (favorites != null) {
