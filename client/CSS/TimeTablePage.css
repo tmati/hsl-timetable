@@ -2,12 +2,13 @@
     font-size: 2em;
 }
 
-#stopDiv {
-    text-align: right;
-}
-
 #timeDiv {
     text-align: right;
+    margin-right: 0;
+}
+
+#dateDiv {
+    margin-left: 1em;
 }
 
 thead {
@@ -21,10 +22,10 @@ thead {
 #timeHeader {
     text-align: right;
 }
-#timeDiv {
-    margin-right: 0;
-}
 
+#lineHeader {
+    text-align: left;
+}
 
 tr {
     border-bottom: 3px solid white;
@@ -37,9 +38,6 @@ tr {
 .imgCell img {
     max-width: 4em;
     padding-top: 1em;
-}
-
-.imgCell {
 }
 
 .routeCell {
@@ -64,5 +62,30 @@ tr {
 }
 #iconDiv {
     max-width: 1em;
+    float: right;
+    margin-right: 1em;
+}
 
+#centerDiv {
+    display: inline-flex;
+    margin: auto;
+    text-align: center;
+}
+
+#arrowIconDiv {
+    max-width: 1em;
+}
+
+#leftDiv {
+    display: inline-flex;
+    margin: auto;
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
 }

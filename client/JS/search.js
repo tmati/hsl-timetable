@@ -63,10 +63,14 @@ function logout() {
  */
 function searchSchedule() {
     const stop = document.getElementById('searchField').value;
-    cleanAndSaveName(stop);
-    const url = window.location.href;
-    const request = url.substring(0, url.indexOf("#")) + "#timetable";
-    window.location.href = request;
+    if (cleanAndSaveName(stop)) {
+        const url = window.location.href;
+        const request = url.substring(0, url.indexOf("#")) + "#timetable";
+        window.location.href = request;
+    } else {
+        alert("Epäkelpo syöte. yritä uudelleen.");
+        location.reload();
+    }
 }
 
 /**
@@ -80,8 +84,13 @@ function cleanAndSaveName(stopName) {
         stopName.replace(/\s+/, "");
         stopNumber = editString.substring(editString.indexOf("/") + 2);
         textStopName = stopName.substring(0, stopName.indexOf("/"));
-        sessionStorage.setItem('stopNumber', stopNumber);
         sessionStorage.setItem('textStopName', textStopName);
+        sessionStorage.setItem('stopNumber', stopNumber)
+        if (sessionStorage.getItem('textStopName') == '') {
+            return false;
+        }
+        return true;
+
     }
 }
 

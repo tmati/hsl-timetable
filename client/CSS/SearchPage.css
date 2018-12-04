@@ -1,3 +1,13 @@
+body {
+    background: url("../content/img/Ferry-bgnb.png");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
 .loginForm {
     display: none;
 }
@@ -5,6 +15,7 @@
 .logoutForm {
     display: none;
 }
+
 
 .loginInfo {
     cursor: pointer;
@@ -62,7 +73,6 @@ input[type="button"]:hover  {
 }
 
 #searchField {
-    max-width: 20em;
     margin-right: auto;
     margin-left: auto;
 }

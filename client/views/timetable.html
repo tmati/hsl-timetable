@@ -4,11 +4,22 @@
 
     <!-- Top info bar. -->
     <div class="row " id="topDiv">
-        <div class="col" id="iconDiv" onclick="hideIconAddFav()">
-            <i class="fas fa-star"></i></i></div>
-        <div class="col" id="dateDiv"></div>
-        <div class="col" id="stopDiv"></div>
-        <div class="col" id="timeDiv"></div>
+        <div class="col-4" id="leftDiv">
+                <div class="col" id="arrowIconDiv" onclick="history.back()">
+                    <i class="far fa-arrow-alt-circle-left"></i></div>
+                <div class="col" id="dateDiv"></div>
+            </div>
+        <div class="col-4" id="centerDiv">
+
+            <div class="col" id="stopDiv"></div>
+        </div>
+        <div class="col-4" id="rightDiv"onclick="hideIconAddFav()">
+            <div class="col" id="iconDiv" onclick="hideIconAddFav()">
+                <i class="fas fa-star"></i></i></div>
+            <div class="col" id="timeDiv">
+        </div>
+
+        </div>
     </div>
     <div id="parentDiv">
         <div class="table-responsive" id="tableDiv">
