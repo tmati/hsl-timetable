@@ -1,12 +1,4 @@
-body {
-    background: url("../content/img/Ferry-bgnb.png");
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 100vh;
-}
+
 
 .loginForm {
     display: none;
@@ -19,6 +11,7 @@ body {
 
 .loginInfo {
     cursor: pointer;
+
 }
 
 input[type=text] {
@@ -89,3 +82,5 @@ input[type="button"]:hover  {
 th {
     text-align: center;
 }
+
+
