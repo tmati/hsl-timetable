@@ -47,5 +47,20 @@ class Database {
 
         $db->close();
     }
+
+    public function delete($table, $ehto) {
+        #echo "Valitse ";
+        $db = $this->connect();
+        $sql = "DELETE FROM ".$table." WHERE ".$ehto;
+
+        if ($db->query($sql) === TRUE) {
+            echo "Deleting success";
+        } else {
+            echo "Error: SELECT";
+            #echo "Error: " . $sql . "<br>" . $db->error;
+        }
+
+        $db->close();
+    }
 }
 ?>

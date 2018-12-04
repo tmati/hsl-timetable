@@ -15,7 +15,7 @@ include 'database.php';
         }
         $resource = array();
         $resource = explode('/', $resource_string);
-        for($i=0; $i <=3; $i++){
+        for($i=0; $i <=1; $i++){                //  riina= 3, topi = 2
         	array_shift($resource);
 		}
         //array_shift($resource);
@@ -97,6 +97,11 @@ include 'database.php';
         return $row["UserID"];
     }
 
+    function deleteFavorite($database, $stopID) {
+        $database->delete("favorites", "StopID=".'"'.$stopID.'"');
+        $database->delete("stops", "StopID=".'"'.$stopID.'"');
+    }
+
 
 # Main
 # ----
@@ -161,7 +166,12 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
                 http_response_code(200); # OK
                 echo json_encode($data);
             }
-        } else {
+        }
+        else if($request_method=="DELETE" && key($parameters) == "sID") {
+            echo "fgh";
+            deleteFavorite($database, $parameters["sID"]);
+        }
+        else {
             http_response_code(405); # Method not allowed
             echo "Ei ole komento";
         }
