@@ -6,8 +6,8 @@ var timer = null;
  */
 
 function hideIconAddFav() {
-    document.getElementById('iconDiv').style.display = 'none';
-    postFavoriteStop(sessionStorage.getItem('userdata').userName,sessionStorage.getItem('stopNumber'), sessionStorage.getItem('textStopName'));
+    closeID('favIcon');
+    postFavoriteStop(sessionStorage.getItem('userdata').userID, sessionStorage.getItem('stopNumber'), sessionStorage.getItem('textStopName'));
 }
 
 /**

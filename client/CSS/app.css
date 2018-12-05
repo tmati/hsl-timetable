@@ -1,3 +1,8 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
 body {
     background: url("../content/img/Ferry-bgnb.png");
     background-repeat: repeat;
@@ -11,23 +16,9 @@ body {
     color: white;
     width: 100%;
     height: 100vh;
+    min-width: 310px;
 }
 
-.routeCell p {
-    display: none;
-}
-
-#loginInfo {
-    font-size: 2em;
-}
-
-#favoritesTableBody {
-    font-size: 2em;
-}
-
-#favoritesTableHead {
-    font-size: 3.5em;
-}
 /* Limits from Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
@@ -64,7 +55,7 @@ body {
         font-size: 16px;
     }
     #searchField {
-        max-width: 50%;
+        max-width: 70%;
     }
     .routeCell p {
         display: inline-block;

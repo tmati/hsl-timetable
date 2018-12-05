@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Class Database witch handler database.
  */

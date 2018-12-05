@@ -71,14 +71,15 @@ function postUser(name) {
  * @param userid The UserID to add
  * @param stopname The stop plaintext name to add
  */
-
-function postFavoriteStop(stopid, userid, stopname) {
+function postFavoriteStop(userid, stopid, stopname) {
     if (name != null) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function ()  {
             console.log("Suosikki lisätty");
+            console.log(data);
         }
         const data = '{ "userID" : "' + userid + '", "stopID" : "' + stopid + '", "stopName" : "' + stopname + '" }';
+
         const request = "http://localhost/server/index.php";
         xhttp.open("POST", request, true);
         xhttp.setRequestHeader("Content-type", "application/json");

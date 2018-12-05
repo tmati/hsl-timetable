@@ -46,8 +46,6 @@ input[type="button"]:hover  {
 }
 
 .autocomplete-items div {
-    margin-left: auto;
-    margin-right: auto;
     max-width: 30em;
     padding: 1em;
     cursor: pointer;
@@ -81,6 +79,23 @@ input[type="button"]:hover  {
 
 th {
     text-align: center;
+}
+
+
+.routeCell p {
+    display: none;
+}
+
+#loginInfo {
+    font-size: 2em;
+}
+
+#favoritesTableBody {
+    font-size: 2em;
+}
+
+#favoritesTableHead {
+    font-size: 3.5em;
 }
 
 
