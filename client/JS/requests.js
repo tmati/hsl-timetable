@@ -55,6 +55,7 @@ function postUser(name) {
     if (name != null) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function ()  {
+                console.log(name);
                 console.log("Käyttäjä lisätty.");
         }
         const data = '{ "name" : "' + name + '" }';

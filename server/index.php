@@ -50,37 +50,36 @@ include 'database.php';
 # Handlers
 # ------------------------------
 
-    function postUser($database, $name) {
-        $database->insert("users", "Username", "'".$name."'");
+    function postUser($database, $body) {
+
+        $database->insert($body, 3);
 	}
 
-	function postFavoriteStop($database, $userID, $stopID, $stopName) {
-        $database->StopsInsert("stops", "Name, StopID", $stopName,$stopID);
-        $result = $database->multiParamInsert("favourites", "UserID, StopID", $userID ,$stopID);
+	function postFavoriteStop($database, $body) {
+        $database->insert($body, 5);
+        $database->insert($body, 4);
     }
 
     function getStops($database, $userID) {
-        $result = $database->selectStops("favourites", "StopID",$userID);
-        if ($result->num_rows > 0) {
-        $array = array();
-        $data = null;
-
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                while($nameRow = $database->selectStopNames("stops", "Name", "StopID=".'"'.$row["StopID"].'"')) {
-                    echo "nimi ".$nameRow["Name"];
-                }
-
+        $results = $database->select("favourites", "StopID", $userID, 1);
+        #echo $results[0];
+        #echo sizeof($results);
+        if (sizeof($results) > 0) {
+            $array = array();
+            for ($x = 0; $x < sizeof($results); $x++) {
+                #echo $results[$x];
+                $stop = $database->select("stops", "Name", $results[$x], 2) ;
+                #echo var_export($stop);
                 $data = array(
-                    "stopID" => $row["StopID"],
-                    "stopName" => $nameRow["Name"]
+                    "stopID" => $results[$x],
+                    "stopName" => $stop[0]
                 );
-                echo "id: " . $row["StopID"]. " name: ".$nameRow["Name"]." <br>";
+                #echo "id: " . $results[$x]. " name: ".$stop[0]." <br>";
                 array_push($array, $data);
             }
             return $array;
         } else {
-            echo 0;
+            return 0;
         }
         #$row = mysqli_fetch_assoc($result);
         #echo implode(",",$result);
@@ -88,9 +87,9 @@ include 'database.php';
     }
 
     function getUserID($database, $userName) {
-        $result = $database->select("users", "UserID", "Username=".'"'.$userName.'"');
-        $row = mysqli_fetch_assoc($result);
-        return $row["UserID"];
+        $result = $database->select("users", "UserID", $userName, 0);
+        #$row = mysqli_fetch_assoc($result);
+        return $result[0];
     }
 
 
@@ -118,11 +117,11 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
 	if ($resource[0]=="index.php") {
 
     	if ($request_method=="POST" && array_key_exists('name', $body)) {
-    		postUser($database, $body->{'name'});
+    		postUser($database, $body);
             http_response_code(200); # OK
     	}
         else if ($request_method=="POST" && array_key_exists('userID', $body) && array_key_exists('stopID', $body)) {
-            postFavoriteStop($database, $body->{'userID'}, $body->{'stopID'}, $body->{'stopName'});
+            postFavoriteStop($database, $body);
         }
         else if ($request_method=="GET" && key($parameters) == "ID") {
             #getStops($database, $parameters["userID"]);
@@ -138,6 +137,7 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
         }
         else if ($request_method=="GET" && key($parameters) == "user") {
             $userID = getUserID($database, $parameters["user"]);
+            #echo $userID;
             if ($userID > 0) {
                 $data = array(
                     "userID" => $userID,

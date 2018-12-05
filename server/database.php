@@ -1,22 +1,40 @@
 <?php
 
 /**
- * Class Database constructor
+ * Class Database witch handler database.
  */
 class Database {
+
+    /**
+     * Database constructor.
+     * @param $server the server url
+     * @param $user the name of user
+     * @param $password the password of database
+     * @param $database the name of database
+     */
     public function __construct($server, $user, $password, $database) {
         $this->host = $server;
         $this->username = $user;
         $this->password = $password;
         $this->database = $database;
+        $this->prepareStatements = array
+        (
+            array("SELECT UserID FROM users WHERE Username = ?", "s"),
+            array("SELECT StopID FROM favorites WHERE UserID = ?", "i"),
+            array("SELECT StopName FROM stops WHERE StopID = ?", "s"),
+            array("INSERT INTO users (Username) VALUES (?)", "s"),
+            array("INSERT INTO favorites (UserID, StopID) VALUES (?,?)", "is"),
+            array("INSERT INTO stops (StopName, StopID) VALUES (?,?)", "ss")
+        );
     }
 
     public function __toString()
     {
-        return $this->host;
+        return (string)$this->host;
     }
 
     /**
+     * Create connection to database
      * @return mysqli New connection
      */
     protected function connect() {
@@ -24,87 +42,32 @@ class Database {
     }
 
     /**
-     * Inserts a name feed into the database using PreparedStatement.
-     * @param $table the tabel to use
-     * @param $values the values to add
+     * Inserts data into database.
      * @param $data the data to add.
+     * @param $i
      */
-    public function insert($table, $values, $data) {
-        echo "lisays";
-        //TOIMII POSTMANISSA
-        //Inserts name in form 'name' into SQL
-        $insertData = $data;
+    public function insert($data, $i) {
         $db = $this->connect();
-        $stmt = $db->prepare("INSERT INTO ".$table." (".$values.") VALUES (?)");
-        //$sql = "INSERT INTO ".$table." (".$values.") VALUES ($data)";
-        $stmt->bind_param("s", $insertData);
-
-        $stmt->execute();
-
-        //if ($db->query($stmt) === TRUE) {
-        if($stmt->execute() === true) {
-            echo "New user created successfully";
+        if ($stmt = $db->prepare($this->prepareStatements[$i][0])) {
+            #echo $this->prepareStatements[$i][0];
+            #echo $this->prepareStatements[$i][1]."";
+            # bind parameters
+             if($i == 3) {
+                 $stmt->bind_param($this->prepareStatements[$i][1] . "", $data->{'name'});
+             } else if ($i == 4) {
+                 $stmt->bind_param($this->prepareStatements[$i][1] . "", $data->{'userID'}, $data->{'stopID'});
+             } else if ($i == 5) {
+                 $stmt->bind_param($this->prepareStatements[$i][1] . "", $data->{'stopName'}, $data->{'stopID'});
+             }
+            if ($stmt->execute() === true) {
+                echo "New user created successfully";
+            } else {
+                echo "Error: " . $stmt . "<br>" . $db->error;
+            }
+            $stmt->close();
         } else {
-            echo "Error: " . $stmt . "<br>" . $db->error;
+            echo "ERROR sql query";
         }
-        $stmt->close();
-        $db->close();
-    }
-
-    /**
-     * Another form of required PreparedStatement insert queries.
-     * @param $table
-     * @param $values
-     * @param $stopName
-     * @param $stopID
-     */
-    public function StopsInsert($table, $values, $stopName, $stopID) {
-        //TOIMII POSTMANISSA
-        echo "lisays";
-
-        //Inserts stopname and stopID into table
-        $insertStopname = $stopName;
-        $insertStopID = $stopID;
-        $db = $this->connect();
-        $stmt = $db->prepare("INSERT INTO ".$table." (".$values.") VALUES (?,?)");
-        //$sql = "INSERT INTO ".$table." (".$values.") VALUES ($data)";
-        $stmt->bind_param("si", $insertStopname,$insertStopID);
-
-        if ($stmt->execute() === TRUE) {
-            echo "Stop inserted successfully";
-        } else {
-            //echo "Error: " . $stmt . "<br>" . $db->error;
-            echo $stmt->error;
-        }
-        $stmt->close();
-        $db->close();
-    }
-
-    /**
-     * PreparedStatement insert for userID and StopID
-     * @param $table
-     * @param $values
-     * @param $userID
-     * @param $stopID
-     */
-    public function multiParamInsert($table, $values, $userID, $stopID) {
-        echo "lisays";
-        //TOIMII POSTMANISSA
-        //Inserts name in form 'name' into SQL
-        $insertUserID = $userID;
-        $insertStopID = $stopID;
-        $db = $this->connect();
-        $stmt = $db->prepare("INSERT INTO ".$table." (".$values.") VALUES (?,?)");
-        //$sql = "INSERT INTO ".$table." (".$values.") VALUES ($data)";
-        $stmt->bind_param("ii", $insertUserID,$insertStopID);
-
-        if ($stmt->execute() === TRUE) {
-            echo "Favourite added successfully";
-        } else {
-            //echo "Error: " . $stmt . "<br>" . $db->error;
-            echo $stmt->error;
-        }
-        $stmt->close();
         $db->close();
     }
 
@@ -112,69 +75,41 @@ class Database {
      * PreparedStatement query for selecting an users favourited stops from the database.
      * @param $table
      * @param $values
-     * @param $ehto
+     * @param $condition
+     * @param $i the prepared statement types
      * @return bool|mysqli_result
      */
-    public function selectStops($table, $values, $ehto) {
-        #echo "Valitse ";
-        $selectEhto = $ehto;
+    public function select($table, $values, $condition, $i) {
         $db = $this->connect();
-        $stmt = $db->prepare("SELECT ".$values." FROM ".$table." WHERE UserID=(?)");
-        //$sql = "SELECT ".$values." FROM ".$table." WHERE ".$ehto;
-        $stmt->bind_param("i", $selectEhto);
+        #create a prepared statement
+        $arr = [];
+        if ($stmt = $db->prepare($this->prepareStatements[$i][0])) {
 
-        $stmt->execute();
-        $result = $stmt->get_result();
-        //$result = $db->query($sql);
-        #echo $sql;
 
-        if ($result->num_rows > 0) {
-        //if ($result->num_rows() > 0) {
-            echo "onnistui";
-            var_dump($result);
-            return $result;
-        } else {
-            echo "pieleen";
-            #echo "Error: " . $sql . "<br>" . $db->error;
-            echo $stmt->error;
+             #echo $this->prepareStatements[$i][0];
+             #echo $this->prepareStatements[$i][1]."";
+            # bind parameters
+            $stmt->bind_param($this->prepareStatements[$i][1]."", $condition);
+
+            # execute query
+            $stmt->execute();
+
+            # bind result variables
+            #$stmt->bind_result($result);
+            $result = $stmt->get_result();
+
+            #echo var_export($result->fetch_all());
+
+            # fetch values
+            while ($row = $result->fetch_row()) {
+                #echo var_export($row);
+                $arr[] = $row[0];
+            }
+#echo "testi";
+            $stmt->close();
         }
-        $stmt->close;
         $db->close();
-    }
-
-    /**
-     * PreparedStatement query to select names for the users' favorite stops.
-     * @param $table
-     * @param $values
-     * @param $ehto
-     * @return bool|mysqli_result
-     */
-    public function selectStopNames($table, $values, $ehto) {
-        //TOIMII MELKEIN: KATSO POSTMAN
-        #echo "Valitse ";
-        $selectEhto = $ehto;
-        $db = $this->connect();
-        $stmt = $db->prepare("SELECT ".$values." FROM ".$table." WHERE (?)");
-        //$sql = "SELECT ".$values." FROM ".$table." WHERE ".$ehto;
-        $stmt->bind_param("s", $selectEhto);
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-        //$result = $db->query($sql);
-        #echo $sql;
-
-        if ($result->num_rows > 0) {
-            //if ($result->num_rows() > 0) {
-            echo "onnistui";
-            var_dump($result);
-            return $result;
-        } else {
-            echo "pieleen meni";
-            #echo "Error: " . $sql . "<br>" . $db->error;
-            echo $stmt->error;
-        }
-        //$stmt->close;
-        $db->close();
+        return $arr;
     }
 
 }
