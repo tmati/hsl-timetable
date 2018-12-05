@@ -7,7 +7,10 @@ var timer = null;
 
 function hideIconAddFav() {
     closeID('favIcon');
-    postFavoriteStop(sessionStorage.getItem('userdata').userID, sessionStorage.getItem('stopNumber'), sessionStorage.getItem('textStopName'));
+    const userdat = sessionStorage.getItem('userdata');
+   const user = JSON.parse(userdat);
+    console.log(userdat);
+    postFavoriteStop(user.userID, sessionStorage.getItem('stopNumber'), sessionStorage.getItem('textStopName'));
 }
 
 /**
