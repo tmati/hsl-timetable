@@ -100,8 +100,8 @@ include 'database.php';
     }
 
     function deleteFavorite($database, $stopID) {
-        $database->delete("favorites", "StopID=".'"'.$stopID.'"');
-        $database->delete("stops", "StopID=".'"'.$stopID.'"');
+        $database->delete($stopID, 6);
+       # $database->delete("stops", "StopID=".'"'.$stopID.'"');
     }
 
 
@@ -171,7 +171,6 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
             }
         }
         else if($request_method=="DELETE" && key($parameters) == "sID") {
-            echo "fgh";
             deleteFavorite($database, $parameters["sID"]);
         }
         else {

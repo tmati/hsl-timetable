@@ -86,3 +86,19 @@ function postFavoriteStop(userid, stopid, stopname) {
         xhttp.send(data);
     }
 }
+
+
+
+function deleteFavoriteStop(id) {
+    if (id != null) {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function ()  {
+            console.log("Pysäkki ".id);
+        }
+
+        const request = "http://localhost/server/index.php?sID=" + id;
+        xhttp.open("DELETE", request, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send();
+    }
+}
