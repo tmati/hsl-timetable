@@ -47,6 +47,9 @@ body {
     #favoritesTableHead {
         font-size: 25px;
     }
+    .routeCell p {
+        display: inline-block;
+    }
 }
 
 /* Large devices (desktops, 992px and up) */

@@ -54,17 +54,16 @@ function onLoad() {
 /**
  * The function that gets all the data for the timetable.
  */
-function getStopTimeTable() {
+function getStopTimeTable(param) {
     console.log("running");
-    console.log(sessionStorage.getItem('stopNumber'));
-    console.log(sessionStorage.getItem('textStopName'));
+    //console.log(sessionStorage.getItem('stopNumber'));
+    //console.log(sessionStorage.getItem('textStopName'));
 
     const dateString = getDate();
     document.getElementById('dateDiv').innerText = dateString;
     document.getElementById('stopDiv').innerHTML = sessionStorage.getItem('textStopName');
     document.getElementById('timeDiv').innerText = gettime();
 
-    getDataForTimetable();
 }
 
 function backLink() {
