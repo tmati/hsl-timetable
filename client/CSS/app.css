@@ -28,7 +28,7 @@ body {
         background-repeat: no-repeat;
     }
     .autocomplete-items p {
-        font-size: 2em;
+        font-size: 15px;
     }
 }
 
@@ -38,14 +38,14 @@ body {
         font-size: 12px;
     }
     #loginInfo{
-    font-size: 1.35em;
+    font-size: 20px;
     }
     #favoritesTableBody {
-        font-size: 1.35em;
+        font-size: 15px;
     }
 
     #favoritesTableHead {
-        font-size: 2em;
+        font-size: 25px;
     }
 }
 

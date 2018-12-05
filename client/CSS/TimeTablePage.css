@@ -8,15 +8,13 @@
 
 #timeDiv {
     text-align: right;
+    align-content: center;
 }
 
 #dateDiv {
     margin-left: 1em;
 }
 
-thead {
-    font-size: 1.5em;
-}
 
 #routeHeader {
     text-align: center;
@@ -78,4 +76,13 @@ tr {
 ::-webkit-scrollbar {
     width: 0px;  /* remove scrollbar space */
     background: transparent;  /* optional: just make scrollbar invisible */
+}
+
+.fa-star {
+    color: white;
+    float: right;
+}
+
+.fa-arrow-alt-circle-left {
+    color: white;
 }
