@@ -32,7 +32,7 @@
         <div class="col-sm-7 mx-auto mt-5 text-center" >
             <form>
                 <div class="form-group">
-                    <label class="" for="searchField">Etsi pysäkkiä nimellä:</label>
+                    <label id="searchFieldLabel" class="" for="searchField">Etsi pysäkkiä nimellä:</label>
                     <input class="form-control form-control-lg" type="text" name="searchField" id="searchField" placeholder="Syötä pysäkin nimi..." onkeyup=getDataForStop()>
                 </div>
                 <input class="btn" type="button" onclick="searchSchedule()" value="Hae">
@@ -45,8 +45,8 @@
         <div class="col-sm-5 mx-auto mt-5">
             <!-- The list of favourite stops for logged in users. Will appear on click. -->
             <h3 id="favText" >SUOSIKKIPYSÄKIT</h3>
-            <table class="table">
-                <thead>
+            <table class="table" id="FavTable">
+                <thead id="favoritesTableHead">
                     <tr>
                         <th scope="col" colspan="2">Pysäkin nimi</th>
                     </tr>

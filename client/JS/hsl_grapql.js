@@ -1,4 +1,6 @@
-//Querying HSL API for transit stop information.
+/**
+ * Querying HSL API for stop name information. Is called every time the search field is updated.
+ */
 function getDataForStop() {
     //console.log(stopName);
     const stopName = document.getElementById('searchField').value
@@ -31,6 +33,9 @@ function getDataForStop() {
     }
 }
 
+/**
+ * Gets timetable data from HSL API and builds a DOM timetable view.
+ */
 function getDataForTimetable() {
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {

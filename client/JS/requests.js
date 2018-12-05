@@ -1,4 +1,7 @@
-// GET user request to the REST API.
+/**
+ * Get user query for REST API
+ * @param name queries by name.
+ */
 function getUser(name) {
     if (name != null) {
         const xhttp = new XMLHttpRequest();
@@ -16,14 +19,17 @@ function getUser(name) {
                     alert("Name not found in database. Try again.");
                 }
         }
-        const url = window.location.href;
-        const request = url.substring(0, url.indexOf("client")) + "server/index.php?user=" + name;
+        const request = "http://localhost/server/index.php?user=" + name;
         xhttp.open("GET", request, true);
         xhttp.send();
     }
 }
 
-// GET favorites request to the REST API.
+/**
+ * GET favorites request to the REST API.
+ * @param id querying by userID
+ */
+
 function getFavorites(id) {
     if (id != null) {
         const xhttp = new XMLHttpRequest();
@@ -33,23 +39,47 @@ function getFavorites(id) {
             sessionStorage.setItem('favorites', JSON.stringify(favorites));
             showFavTable();
         }
-        const url = window.location.href;
-        const request = url.substring(0, url.indexOf("client")) + "server/index.php?ID=" + id;
+        const request = "http://localhost/server/index.php?ID=" + id;
         xhttp.open("GET", request, true);
         xhttp.send();
     }
 }
 
-// POST user request to the REST API.
+/**
+ * POST user request to the REST API.
+ * @param name The name to send to the database.
+ */
+
 function postUser(name) {
     if (name != null) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function ()  {
+                console.log(name);
                 console.log("Käyttäjä lisätty.");
         }
         const data = '{ "name" : "' + name + '" }';
-        const url = window.location.href;
-        const request = url.substring(0, url.indexOf("client")) + "server/index.php?";
+        const request = "http://localhost/server/index.php";
+        xhttp.open("POST", request, true);
+        xhttp.setRequestHeader("Content-type", "application/json");
+        xhttp.send(data);
+    }
+}
+
+/**
+ * POST favorite stop to REST API.
+ * @param stopid The StopID to add
+ * @param userid The UserID to add
+ * @param stopname The stop plaintext name to add
+ */
+
+function postFavoriteStop(stopid, userid, stopname) {
+    if (name != null) {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function ()  {
+            console.log("Suosikki lisätty");
+        }
+        const data = '{ "userID" : "' + userid + '", "stopID" : "' + stopid + '", "stopName" : "' + stopname + '" }';
+        const request = "http://localhost/server/index.php";
         xhttp.open("POST", request, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(data);

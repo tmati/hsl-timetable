@@ -1,9 +1,17 @@
+
+
 .loginForm {
     display: none;
 }
 
 .logoutForm {
     display: none;
+}
+
+
+.loginInfo {
+    cursor: pointer;
+
 }
 
 input[type=text] {
@@ -16,6 +24,7 @@ input[type="button"] {
     color: white;
     border-radius: 1em;
     border: solid white;
+    font-weight: bold;
 }
 
 input[type="button"]:active {
@@ -30,10 +39,16 @@ input[type="button"]:hover  {
 .autocomplete-items {
     color: black;
     z-index: 99;
-    width: 30em;
+}
+
+#searchFieldLabel {
+    font-size: 2.5em;
 }
 
 .autocomplete-items div {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30em;
     padding: 1em;
     cursor: pointer;
     background-color: #fff;
@@ -49,3 +64,23 @@ input[type="button"]:hover  {
     background-color: black !important;
     color: #ffffff;
 }
+
+#searchField {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#searchField p {
+    font-weight: bolder;
+    color: black;
+}
+
+#favText {
+    text-align: center;
+}
+
+th {
+    text-align: center;
+}
+
+

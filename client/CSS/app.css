@@ -1,22 +1,43 @@
 body {
     background: url("../content/img/Ferry-bgnb.png");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
     font-family: Arial, sans-serif;
     font-size: 6px;
     font-weight: bold;
     color: white;
-    position: absolute;
-    height: 100%;
     width: 100%;
+    height: 100vh;
 }
 
-/* Limits from Bootsrap */
+.routeCell p {
+    display: none;
+}
+
+#loginInfo {
+    font-size: 2em;
+}
+
+#favoritesTableBody {
+    font-size: 2em;
+}
+
+#favoritesTableHead {
+    font-size: 3.5em;
+}
+/* Limits from Bootstrap */
 
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 567px) {
     body {
         font-size: 10px;
+        background-repeat: no-repeat;
+    }
+    .autocomplete-items p {
+        font-size: 2em;
     }
 }
 
@@ -24,14 +45,29 @@ body {
 @media (min-width: 768px) {
     body {
         font-size: 12px;
+    }
+    #loginInfo{
+    font-size: 1.35em;
+    }
+    #favoritesTableBody {
+        font-size: 1.35em;
+    }
 
+    #favoritesTableHead {
+        font-size: 2em;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
     body {
-        font-size: 14px;
+        font-size: 16px;
+    }
+    #searchField {
+        max-width: 50%;
+    }
+    .routeCell p {
+        display: inline-block;
     }
 }
 

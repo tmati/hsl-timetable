@@ -1,22 +1,46 @@
 <!-- The timetable page view. -->
 
 <div>
+
+    <!-- Top info bar. -->
     <div class="row " id="topDiv">
+<<<<<<< HEAD
         <a class="col-1" href="javascript:backLink();"><i class='fas fa-arrow-left'></i></a>
         <div class="col" id="dateDiv"></div>
         <div class="col" id="stopDiv"></div>
         <div class="col" id="timeDiv"></div>
+=======
+        <div class="col-4" id="leftDiv">
+                <div class="col" id="arrowIconDiv" onclick="history.back()">
+                    <i class="far fa-arrow-alt-circle-left"></i></div>
+                <div class="col" id="dateDiv"></div>
+            </div>
+        <div class="col-4" id="centerDiv">
+
+            <div class="col" id="stopDiv"></div>
+        </div>
+        <div class="col-4" id="rightDiv"onclick="hideIconAddFav()">
+            <div class="col" id="iconDiv" onclick="hideIconAddFav()">
+                <i class="fas fa-star"></i></i></div>
+            <div class="col" id="timeDiv">
+        </div>
+
+        </div>
+>>>>>>> topi2
     </div>
     <div id="parentDiv">
         <div class="table-responsive" id="tableDiv">
             <table class="table" id="mainTable">
+
+                <!-- Main table header -->
                 <thead>
                     <tr>
-                        <th scope="col" colspan="2">Linja</th>
-                        <th scope="col">Määränpää / reitti</th>
-                        <th scope="col">Aika / Min</th>
+                        <th scope="col" colspan="2" id="lineHeader">Linja</th>
+                        <th scope="col" id="routeHeader">Määränpää / reitti</th>
+                        <th scope="col" id="timeHeader">Aika / Min</th>
                     </tr>
                 </thead>
+                <!-- Table body -->
                 <tbody id="tableBody">
                         <tr id="tableRow0">
                             <td class="lineCell" id="lineCell0"></td>

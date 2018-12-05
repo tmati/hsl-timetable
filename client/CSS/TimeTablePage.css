@@ -3,7 +3,32 @@ i {
 }
 
 #topDiv {
+    font-size: 2em;
+}
+
+#timeDiv {
+    text-align: right;
+    margin-right: 0;
+}
+
+#dateDiv {
+    margin-left: 1em;
+}
+
+thead {
     font-size: 1.5em;
+}
+
+#routeHeader {
+    text-align: center;
+}
+
+#timeHeader {
+    text-align: right;
+}
+
+#lineHeader {
+    text-align: left;
 }
 
 tr {
@@ -11,33 +36,60 @@ tr {
 }
 
 .lineCell {
-    font-size: 3em;
+    font-size: 4em;
 }
 
 .imgCell img {
-    max-width: 3em;
+    max-width: 4em;
+    padding-top: 1em;
 }
 
 .routeCell {
-    line-height: 0.1em;
+    line-height: 0.4em;
     text-align: center;
 }
 
 .routeCell p {
     color: lightgray;
+    font-size: 1.5em;
 }
 
 .routeCell h3 {
-    font-size: 1.5em;
+    margin-top: 0.5em;
+    font-size: 2em;
     font-weight: bold;
 }
 
 .timeCell {
-    font-size: 3em;
+    font-size: 4em;
     text-align: right;
 }
-
-.deleteFav {
-    text-align: right;
+#iconDiv {
+    max-width: 1em;
+    float: right;
+    margin-right: 1em;
 }
 
+#centerDiv {
+    display: inline-flex;
+    margin: auto;
+    text-align: center;
+}
+
+#arrowIconDiv {
+    max-width: 1em;
+}
+
+#leftDiv {
+    display: inline-flex;
+    margin: auto;
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}

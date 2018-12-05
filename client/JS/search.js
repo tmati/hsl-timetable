@@ -11,7 +11,9 @@ function displayLogin() {
     openID("loginForm");
 }
 
-//Creates an user and tries to add it to the database. Gives out page alerts if problems arise.
+/**
+ * Creates a named user and tries to add it to the database.
+ */
 function createUser() {
     const givenName = document.getElementById('username').value;
     if (givenName == "" || givenName.length == 0 || givenName == null) {
@@ -20,9 +22,8 @@ function createUser() {
     } else {
         alert(givenName);
         postUser(givenName);
-        //Insert into USER values ('givenName');
     }
-    document.getElementById('login').style.display = 'none';
+    document.getElementById('loginInfo').style.display = 'none';
 }
 
 // Used to log in as an existing user. Gives out page alerts if user with given name can't be found.
@@ -44,14 +45,25 @@ function logout() {
     openID("loginInfo");
 }
 
+/**
+ *
+ */
 function searchSchedule() {
     const stop = document.getElementById('searchField').value;
-    cleanAndSaveName(stop);
-    const url = window.location.href;
-    const request = url.substring(0, url.indexOf("#")) + "#timetable";
-    window.location.href = request;
+    if (cleanAndSaveName(stop)) {
+        const url = window.location.href;
+        const request = url.substring(0, url.indexOf("#")) + "#timetable";
+        window.location.href = request;
+    } else {
+        alert("Epäkelpo syöte. yritä uudelleen.");
+        location.reload();
+    }
 }
 
+/**
+ * Modifies search field input to match HSL API query requirements.
+ * @param stopName the input from the search field.
+ */
 function cleanAndSaveName(stopName) {
     if (stopName != null) {
         var editString = stopName;
@@ -59,8 +71,13 @@ function cleanAndSaveName(stopName) {
         stopName.replace(/\s+/, "");
         stopNumber = editString.substring(editString.indexOf("/") + 2);
         textStopName = stopName.substring(0, stopName.indexOf("/"));
-        sessionStorage.setItem('stopNumber', stopNumber);
         sessionStorage.setItem('textStopName', textStopName);
+        sessionStorage.setItem('stopNumber', stopNumber)
+        if (sessionStorage.getItem('textStopName') == '') {
+            return false;
+        }
+        return true;
+
     }
 }
 
@@ -78,6 +95,9 @@ function deleteFavorite(i) {
     alert("TODO: implementation");
 }
 
+/**
+ * Displays a user's favourite stops in a table.
+ */
 function showFavTable() {
     const favorites = sessionStorage.getItem('favorites');
     const favoritesTableBody = document.getElementById('favoritesTableBody');
