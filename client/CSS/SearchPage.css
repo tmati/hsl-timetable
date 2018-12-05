@@ -1,3 +1,5 @@
+
+
 .loginForm {
     display: none;
 }
@@ -6,8 +8,10 @@
     display: none;
 }
 
+
 .loginInfo {
     cursor: pointer;
+
 }
 
 input[type=text] {
@@ -62,7 +66,6 @@ input[type="button"]:hover  {
 }
 
 #searchField {
-    max-width: 20em;
     margin-right: auto;
     margin-left: auto;
 }
@@ -79,3 +82,5 @@ input[type="button"]:hover  {
 th {
     text-align: center;
 }
+
+

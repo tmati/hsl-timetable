@@ -4,9 +4,10 @@
     <list default="true" id="fe553f4e-d863-4c07-8327-a2bcf393da0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/JS/requests.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/JS/requests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/CSS/SearchPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/CSS/SearchPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/CSS/TimeTablePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/CSS/TimeTablePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/CSS/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/CSS/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/views/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/search.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/CSS/TimeTablePage.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="901">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="867">
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
         </entry>
@@ -87,17 +88,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/CSS/SearchPage.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
+            <state relative-caret-position="935">
+              <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/JS/requests.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+            <state relative-caret-position="476">
+              <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -106,9 +107,14 @@
         <entry file="file://$PROJECT_DIR$/client/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="442">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/JS/timetable.js">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -124,8 +130,7 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onn</find>
-      <find>onni</find>
+      <find>login</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,18 +144,18 @@
         <option value="$PROJECT_DIR$/JS/HSL_JS.js" />
         <option value="$PROJECT_DIR$/ProjectSite.html" />
         <option value="$PROJECT_DIR$/CSS/MainPage.css" />
-        <option value="$PROJECT_DIR$/client/CSS/app.css" />
-        <option value="$PROJECT_DIR$/client/CSS/SearchPage.css" />
-        <option value="$PROJECT_DIR$/client/views/search.html" />
-        <option value="$PROJECT_DIR$/client/JS/search.js" />
         <option value="$PROJECT_DIR$/test.php" />
-        <option value="$PROJECT_DIR$/client/index.html" />
-        <option value="$PROJECT_DIR$/client/CSS/TimeTablePage.css" />
-        <option value="$PROJECT_DIR$/client/views/timetable.html" />
-        <option value="$PROJECT_DIR$/client/JS/timetable.js" />
-        <option value="$PROJECT_DIR$/server/index.php" />
         <option value="$PROJECT_DIR$/server/database.php" />
+        <option value="$PROJECT_DIR$/server/index.php" />
         <option value="$PROJECT_DIR$/client/JS/requests.js" />
+        <option value="$PROJECT_DIR$/client/JS/timetable.js" />
+        <option value="$PROJECT_DIR$/client/JS/search.js" />
+        <option value="$PROJECT_DIR$/client/index.html" />
+        <option value="$PROJECT_DIR$/client/views/timetable.html" />
+        <option value="$PROJECT_DIR$/client/views/search.html" />
+        <option value="$PROJECT_DIR$/client/CSS/SearchPage.css" />
+        <option value="$PROJECT_DIR$/client/CSS/app.css" />
+        <option value="$PROJECT_DIR$/client/CSS/TimeTablePage.css" />
       </list>
     </option>
   </component>
@@ -168,9 +173,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="23" />
-    <option name="width" value="933" />
-    <option name="height" value="1047" />
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1100" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -189,6 +195,12 @@
               <item name="hsl-timetable" type="b2602c69:ProjectViewProjectNode" />
               <item name="hsl-timetable" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hsl-timetable" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hsl-timetable" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hsl-timetable" type="b2602c69:ProjectViewProjectNode" />
@@ -279,13 +291,15 @@
       <workItem from="1543764579028" duration="210000" />
       <workItem from="1543764832283" duration="9428000" />
       <workItem from="1543848701239" duration="14303000" />
-      <workItem from="1543915004967" duration="5707000" />
-      <workItem from="1543955765299" duration="12266000" />
+      <workItem from="1543917492238" duration="3818000" />
+      <workItem from="1543932795308" duration="6612000" />
+      <workItem from="1543939461686" duration="5371000" />
+      <workItem from="1543944871818" duration="4193000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65092000" />
+    <option name="totallyTimeSpent" value="67114000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -297,10 +311,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="23" y="0" width="933" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="23" y="0" width="1358" height="1047" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21649484" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14560863" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -369,60 +382,13 @@
     <entry file="file://$PROJECT_DIR$/client/JS/HSL_JS.js" />
     <entry file="file://$PROJECT_DIR$/client/CSS/TimeTable.css" />
     <entry file="file://$PROJECT_DIR$/test.php" />
-    <entry file="file://$PROJECT_DIR$/client/JS/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="36" column="38" selection-start-line="36" selection-start-column="38" selection-end-line="36" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/search.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/search.html" />
+    <entry file="file://$PROJECT_DIR$/client/timetable.html" />
     <entry file="file://$PROJECT_DIR$/client/JS/timetable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/timetable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/CSS/TimeTablePage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/CSS/app.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/CSS/SearchPage.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="1" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="58" column="34" selection-start-line="58" selection-start-column="34" selection-end-line="58" selection-end-column="34" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/client/content/img/Ferry-bgnb.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/server/database.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -433,8 +399,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/JS/requests.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/JS/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="70" column="50" selection-start-line="70" selection-start-column="50" selection-end-line="70" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/timetable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/search.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="45" selection-start-line="48" selection-start-column="45" selection-end-line="48" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/JS/autocomplete.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="57" column="34" selection-start-line="57" selection-start-column="34" selection-end-line="57" selection-end-column="34" />
+          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/CSS/SearchPage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="1" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/CSS/app.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/CSS/TimeTablePage.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
