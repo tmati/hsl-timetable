@@ -19,6 +19,9 @@ function createUser() {
     if (givenName == "" || givenName.length == 0 || givenName == null) {
         alert("No name given. Try again");
         document.getElementById('dropDownMenu').style.display = 'none';
+    }
+    else if(givenName.indexOf(';')>=1 || givenName.indexOf('}')>=1 || givenName.indexOf('{')>=1 || givenName.indexOf('<')>=1) {
+        alert('Epäkelpo nimi. Yritä uudelleen');
     } else {
         alert(givenName);
         postUser(givenName);
@@ -31,6 +34,9 @@ function userlogin() {
     const givenName = document.getElementById('username').value;
     if (givenName == "" || givenName.length == 0 || givenName == null) {
         alert("No name given. Try again");
+    }
+    else if(givenName.indexOf(';')>=1 || givenName.indexOf('}')>=1 || givenName.indexOf('{')>=1 || givenName.indexOf('<')>=1) {
+        alert('Epäkelpo nimi. Yritä uudelleen');
     } else {
         getUser(givenName);
     }
