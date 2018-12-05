@@ -61,7 +61,7 @@ Router.prototype = {
                         const user = JSON.parse(storage);
                         document.getElementById('user').innerHTML = user.userName;
                         openID("logoutForm");
-                        showFavTable();
+                        getFavorites(user.userID);
                     } else {
                         showFavTable();
                     }

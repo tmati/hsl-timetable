@@ -94,6 +94,9 @@ function deleteFavoriteStop(id) {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function ()  {
             console.log("Pysäkki ".id);
+            const userdata = sessionStorage.getItem('userdata');
+            const user = JSON.parse(userdata);
+            getFavorites(user.userID);
         }
 
         const request = "http://localhost/server/index.php?sID=" + id;

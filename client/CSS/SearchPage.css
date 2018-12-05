@@ -97,5 +97,8 @@ th {
 #favoritesTableHead {
     font-size: 2em;
 }
+.deleteFav {
+    text-align: right;
+}
 
 
