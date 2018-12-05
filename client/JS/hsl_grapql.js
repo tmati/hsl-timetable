@@ -8,8 +8,6 @@ function getDataForStop() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function ()  {
                 var json = JSON.parse(xhttp.responseText);
-                //console.log("JSON: " + json);
-                //console.log(json.data.stops);
                 var jsonArr = json.data.stops;
 
                 var namesArray = [];
@@ -36,51 +34,50 @@ function getDataForStop() {
 /**
  * Gets timetable data from HSL API and builds a DOM timetable view.
  */
-function getDataForTimetable() {
+function getDataForTimetable(requested) {
     const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var stopData = JSON.parse(xhttp.responseText);
-            console.log(stopData.data.stops[0]);
+    xhttp.onload = function () {
+        var stopData = JSON.parse(xhttp.responseText);
+        console.log(stopData.data.stops[0]);
 
-            for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 10; i++) {
 
-                const lineCell = document.getElementById('lineCell' + i);
-                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.shortName);
-                const lineNbr = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.shortName;
-                lineCell.innerHTML = lineNbr;
+            const lineCell = document.getElementById('lineCell' + i);
+            console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.shortName);
+            const lineNbr = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.shortName;
+            lineCell.innerHTML = lineNbr;
 
-                const imgCell = document.getElementById('typeImage' + i);
-                var lineType = setModeIcon(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
-                imgCell.src = lineType;
-                //lineCell.innerHTML = newImage;
-                //imgCell.appendChild(lineType);
+            const imgCell = document.getElementById('typeImage' + i);
+            var lineType = setModeIcon(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
+            imgCell.src = lineType;
+            //lineCell.innerHTML = newImage;
+            //imgCell.appendChild(lineType);
 
-                const routeCell = document.getElementById('routeCell' + i);
-                var routeDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign;
-                var routeLongDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName;
-                routeCell.innerHTML = "<h3>" + routeDesc + "</h3>"+ "<br />" + "<p>" + routeLongDesc + "</p>";
+            const routeCell = document.getElementById('routeCell' + i);
+            var routeDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign;
+            var routeLongDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName;
+            routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
 
-                const timeCell = document.getElementById('timeCell' + i);
-                var routeArrival = addMinutesToTime(((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0);
-                timeCell.innerHTML = routeArrival;
+            const timeCell = document.getElementById('timeCell' + i);
+            var routeArrival = addMinutesToTime(((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0);
+            timeCell.innerHTML = routeArrival;
 
-                //route desc.
-                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign);
+            //route desc.
+            console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign);
 
-                //route long desc.
-                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName);
+            //route long desc.
+            console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName);
 
-                //route vehicle type
-                console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
+            //route vehicle type
+            console.log(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
 
-                //arrival time in minutes
-                console.log("Arriving in " + (((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0) + " minutes");
+            //arrival time in minutes
+            console.log("Arriving in " + (((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0) + " minutes");
 
-            }
         }
     }
-    var data = `{ stops(name: " ` + sessionStorage.getItem('stopNumber') + `") {
+
+    var data = `{ stops(name: " ` + requested + `") {
             stoptimesWithoutPatterns(numberOfDepartures:10) {
                 realtimeArrival
                 trip {
@@ -97,4 +94,43 @@ function getDataForTimetable() {
     xhttp.open("POST", "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql", true);
     xhttp.setRequestHeader("Content-type", "application/graphql");
     xhttp.send(data);
+}
+
+/**
+ * Checks stopName from HSL API. If the request returns data, stopName is ok.
+ * @param stopName The parameter to check.
+ */
+function isStopNameValid(stopName, stopNumber) {
+    console.log(stopName);
+    console.log("haetaan " + stopNumber);
+    console.log("checking params!");
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function ()  {
+            var json = JSON.parse(xhttp.responseText);
+            var jsonArr = json.data.stops;
+            console.log(jsonArr[0].name);
+            if (stopName.localeCompare(jsonArr[0].name) === 0) {
+                console.log("Stop data is valid.");
+                sessionStorage.setItem('stopNumber', stopNumber);
+                sessionStorage.setItem('textStopName', stopName);
+                const dateString = getDate();
+                document.getElementById('dateDiv').innerText = dateString;
+                document.getElementById('stopDiv').innerHTML = jsonArr[0].code;
+                document.getElementById('timeDiv').innerText = gettime();
+                getDataForTimetable(jsonArr[0].code);
+            } else {
+                alert("Pysäkkiä ei löydy HSL:n kannasta");
+                backLink();
+                return false;
+            }
+        }
+        var data = `{   stops(name:  " ` + stopNumber + `") {  
+    name 
+    code 
+          }  
+        }`
+        xhttp.open("POST", "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql", true);
+        xhttp.setRequestHeader("Content-type", "application/graphql");
+        xhttp.send(data);
+
 }
