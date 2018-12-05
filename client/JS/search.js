@@ -91,7 +91,10 @@ function requestSchedule(i) {
     window.location.href = request;
 }
 
-function deleteFavorite(i) {
+function deleteFavorite($i) {
+    const favorites = sessionStorage.getItem('favorites');
+    const stop = JSON.parse(favorites);
+    deleteFavoriteStop(stop[$i].stopID);
     alert("TODO: implementation");
 }
 

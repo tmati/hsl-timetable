@@ -23,7 +23,8 @@ class Database {
             array("SELECT StopName FROM stops WHERE StopID = ?", "s"),
             array("INSERT INTO users (Username) VALUES (?)", "s"),
             array("INSERT INTO favorites (UserID, StopID) VALUES (?,?)", "is"),
-            array("INSERT INTO stops (StopName, StopID) VALUES (?,?)", "ss")
+            array("INSERT INTO stops (StopName, StopID) VALUES (?,?)", "ss"),
+            array("DELETE FROM favorites WHERE StopID=?", "s")
         );
     }
 
@@ -111,16 +112,26 @@ class Database {
         return $arr;
     }
 
-    public function delete($table, $ehto) {
+    public function delete($condition, $i) {
         #echo "Valitse ";
         $db = $this->connect();
-        $sql = "DELETE FROM ".$table." WHERE ".$ehto;
+        if ($stmt = $db->prepare($this->prepareStatements[$i][0])) {
 
-        if ($db->query($sql) === TRUE) {
-            echo "Deleting success";
-        } else {
-            echo "Error: SELECT";
-            #echo "Error: " . $sql . "<br>" . $db->error;
+
+            #echo $this->prepareStatements[$i][0];
+            #echo $this->prepareStatements[$i][1]."";
+            # bind parameters
+            $stmt->bind_param($this->prepareStatements[$i][1]."", $condition);
+
+            # execute query
+            $query = $stmt->execute();
+
+            #echo var_export($result->fetch_all());
+            if ( false === $query ) {
+                echo 'mysqli execute() failed: ';
+            }
+
+            $stmt->close();
         }
 
         $db->close();
