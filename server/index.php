@@ -134,6 +134,7 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
     	}
         else if ($request_method=="POST" && array_key_exists('userID', $body) && array_key_exists('stopID', $body)) {
             postFavoriteStop($database, $body);
+            http_response_code(200); # OK
         }
         else if ($request_method=="GET" && key($parameters) == "ID") {
             #getStops($database, $parameters["userID"]);
@@ -172,6 +173,7 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
         }
         else if($request_method=="DELETE" && key($parameters) == "sID") {
             deleteFavorite($database, $parameters["sID"]);
+            http_response_code(200); # OK
         }
         else {
             http_response_code(405); # Method not allowed
