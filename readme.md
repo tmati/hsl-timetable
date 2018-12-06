@@ -1,7 +1,32 @@
 # HSL - PYSÄKKINÄYTTÖ DOKUMENTAATIO
 
 ## KÄYTTÖTAPAUKSET
-![Aikataulu](./content/documentation/aikataulu.png)
+
+### Hakusivu
+
+Kirjautumaton käyttäjä| Kirjautunut käyttäjä
+--------------------- | --------------------
+ ![Kirjautumaton](./client/content/documentation/kirjautumaton.png) |  ![Kirjautunut](./client/content/documentation/kirjautunut.png)
+Toiminnot | Toiminnot
+Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi | 
+
+### Kirjatuminen
+
+1. Kirjautuminen avautuu painalla "LUO KÄYTTÄJÄ | KIRJAUDU" -nappia:
+
+    ![Kirjautuminen](./client/content/documentation/kirjautuminen.png)
+2. Avautuva lomake mahdollistaa uuden käyttäjän lisäämisen tai sisäänkirjautumisen:
+
+    ![Kirjaudu](./client/content/documentation/kirjaudu.png)
+3. Uloskirjautuminen tapahtuu "Kirjaudu ulos" -napista
+
+    ![Uloskirjautuminen](./client/content/documentation/ulokirjautuminen.png)
+
+
+### Aikataulusivu
+
+
+![Aikataulu](./client/content/documentation/aikataulu.png)
 
 
 ## TIETOKANTA
