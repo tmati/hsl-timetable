@@ -26,7 +26,7 @@ Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi |
 ### Aikataulusivu
 
 
-![Aikataulu](./client/content/documentation/aikataulu.png)
+![Aikataulu](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/aikataulu.png)
 
 
 ## TIETOKANTA
