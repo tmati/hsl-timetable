@@ -32,7 +32,7 @@
         <counts>
           <entry key="css" value="5" />
           <entry key="js" value="79" />
-          <entry key="md" value="2757" />
+          <entry key="md" value="2760" />
           <entry key="php" value="954" />
         </counts>
       </usages-collector>
@@ -40,7 +40,7 @@
         <counts>
           <entry key="CSS" value="5" />
           <entry key="JavaScript" value="79" />
-          <entry key="Markdown" value="2757" />
+          <entry key="Markdown" value="2760" />
           <entry key="PHP" value="954" />
         </counts>
       </usages-collector>
@@ -346,7 +346,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147817000" />
+    <option name="totallyTimeSpent" value="147923000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
