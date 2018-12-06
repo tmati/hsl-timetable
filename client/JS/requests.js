@@ -5,7 +5,8 @@
 function getUser(name) {
     if (name != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onload = function ()  {
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
                 const data = JSON.parse(xhttp.responseText);
                 const foundName = data.userName;
                 if (foundName != null) {
@@ -18,6 +19,7 @@ function getUser(name) {
                 } else {
                     alert("Name not found in database. Try again.");
                 }
+            }
         }
         const request = "http://localhost/server/index.php/rtmapi/users/" + name;
         xhttp.open("GET", request, true);
@@ -33,11 +35,13 @@ function getUser(name) {
 function getFavorites(id) {
     if (id != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onload = function ()  {
-            const data = JSON.parse(xhttp.responseText);
-            const favorites = data.favorites;
-            sessionStorage.setItem('favorites', JSON.stringify(favorites));
-            showFavTable();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                const data = JSON.parse(xhttp.responseText);
+                const favorites = data.favorites;
+                sessionStorage.setItem('favorites', JSON.stringify(favorites));
+                showFavTable();
+            }
         }
         const request = "http://localhost/server/index.php/rtmapi/stops/" + id;
         xhttp.open("GET", request, true);
@@ -53,9 +57,11 @@ function getFavorites(id) {
 function postUser(name) {
     if (name != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onload = function ()  {
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
                 console.log(name);
                 console.log("Käyttäjä lisätty.");
+            }
         }
         const data = '{ "name" : "' + name + '" }';
         const request = "http://localhost/server/index.php/rtmapi/user";
@@ -66,7 +72,7 @@ function postUser(name) {
 }
 
 /**
- * POST favorite stop to REST API.
+ * REST API request (POST) for adding the favorite stop.
  * @param stopid The StopID to add
  * @param userid The UserID to add
  * @param stopname The stop plaintext name to add
@@ -74,9 +80,11 @@ function postUser(name) {
 function postFavoriteStop(userid, stopid, stopname) {
     if (name != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onload = function ()  {
-            console.log("Suosikki lisätty");
-            console.log(data);
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Suosikki lisätty");
+                console.log(data);
+            }
         }
         const data = '{ "userID" : "' + userid + '", "stopID" : "' + stopid + '", "stopName" : "' + stopname + '" }';
 
@@ -87,16 +95,20 @@ function postFavoriteStop(userid, stopid, stopname) {
     }
 }
 
-
-
+/**
+ * REST API request (DELETE) for removing the favorite stop.
+ * @param id the id of favorite stop
+ */
 function deleteFavoriteStop(id) {
     if (id != null) {
         const xhttp = new XMLHttpRequest();
-        xhttp.onload = function ()  {
-            console.log("Pysäkki ".id);
-            const userdata = sessionStorage.getItem('userdata');
-            const user = JSON.parse(userdata);
-            getFavorites(user.userID);
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Pysäkki ".id);
+                const userdata = sessionStorage.getItem('userdata');
+                const user = JSON.parse(userdata);
+                getFavorites(user.userID);
+            }
         }
 
         const request = "http://localhost/server/index.php/rtmapi/favorite/" + id;

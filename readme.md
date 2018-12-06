@@ -6,7 +6,7 @@
 
 #### Toiminnot
 
-[Kirjautumaton käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautuminen.PNG)| [Kirjautunut käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautunut.PNG)
+[Kirjautumaton käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautumaton.PNG)| [Kirjautunut käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautunut.PNG)
 ------------------------------------------------------------------------------------------------------------------------------- | --------------------
 Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi | 
 
