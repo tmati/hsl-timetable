@@ -6,17 +6,17 @@
 
 #### Toiminnot
 
-[Kirjautumaton käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjautuminen.PNG)| [Kirjautunut käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjautunut.PNG)
+[Kirjautumaton käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautuminen.PNG)| [Kirjautunut käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautunut.PNG)
 ------------------------------------------------------------------------------------------------------------------------------- | --------------------
 Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi | 
 
 ### Kirjatuminen
 
-1. Kirjautuminen avautuu painalla ["LUO KÄYTTÄJÄ | KIRJAUDU" -nappia](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjautuminen.PNG)
-2. Avautuva [lomake](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjaudu.PNG) mahdollistaa uuden käyttäjän lisäämisen tai sisäänkirjautumisen.
-3. Uloskirjautuminen tapahtuu ["Kirjaudu ulos" -napista](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/uloskirjautuminen.PNG)
+1. Kirjautuminen avautuu painalla ["LUO KÄYTTÄJÄ | KIRJAUDU" -nappia](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautuminen.PNG)
+2. Avautuva [lomake](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjaudu.PNG) mahdollistaa uuden käyttäjän lisäämisen tai sisäänkirjautumisen.
+3. Uloskirjautuminen tapahtuu ["Kirjaudu ulos" -napista](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/uloskirjautuminen.PNG)
 
-### [Aikataulusivu](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/aikataulu.PNG)
+### [Aikataulusivu](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/aikataulu.PNG)
 
 
 
