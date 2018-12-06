@@ -1,5 +1,9 @@
 # HSL - PYSÄKKINÄYTTÖ DOKUMENTAATIO
 
+## KÄYTTÖTAPAUKSET
+![Aikataulu](https://gitlab.com/tmati/hsl-timetable/tree/riina_final/content/documentation/aikataulu.png)
+
+
 ## TIETOKANTA
 Tietokantamme nimi on hsl ja se koostuu kolmesta taulusta, jotka ovat users, stops ja favorites.
  
