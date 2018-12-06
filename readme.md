@@ -6,7 +6,7 @@
 
 Kirjautumaton käyttäjä| Kirjautunut käyttäjä
 --------------------- | --------------------
- ![Kirjautumaton](./client/content/documentation/kirjautumaton.png) |  ![Kirjautunut](./client/content/documentation/kirjautunut.png)
+ ![Kirjautumaton](../blob/riina_final/client/content/documentation/kirjautumaton.png) |  ![Kirjautunut](./client/content/documentation/kirjautunut.png)
 Toiminnot | Toiminnot
 Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi | 
 
