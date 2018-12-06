@@ -4,29 +4,20 @@
 
 ### Hakusivu
 
-Kirjautumaton käyttäjä| Kirjautunut käyttäjä
---------------------- | --------------------
- ![Kirjautumaton](../blob/riina_final/client/content/documentation/kirjautumaton.png) |  ![Kirjautunut](./client/content/documentation/kirjautunut.png)
-Toiminnot | Toiminnot
+#### Toiminnot
+
+[Kirjautumaton käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjautuminen.PNG)| [Kirjautunut käyttäjä](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjautunut.PNG)
+------------------------------------------------------------------------------------------------------------------------------- | --------------------
 Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi | 
 
 ### Kirjatuminen
 
-1. Kirjautuminen avautuu painalla "LUO KÄYTTÄJÄ | KIRJAUDU" -nappia:
+1. Kirjautuminen avautuu painalla ["LUO KÄYTTÄJÄ | KIRJAUDU" -nappia](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjautuminen.PNG)
+2. Avautuva [lomake](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/kirjaudu.PNG) mahdollistaa uuden käyttäjän lisäämisen tai sisäänkirjautumisen.
+3. Uloskirjautuminen tapahtuu ["Kirjaudu ulos" -napista](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/uloskirjautuminen.PNG)
 
-    ![Kirjautuminen](./client/content/documentation/kirjautuminen.png)
-2. Avautuva lomake mahdollistaa uuden käyttäjän lisäämisen tai sisäänkirjautumisen:
+### [Aikataulusivu](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/aikataulu.PNG)
 
-    ![Kirjaudu](./client/content/documentation/kirjaudu.png)
-3. Uloskirjautuminen tapahtuu "Kirjaudu ulos" -napista
-
-    ![Uloskirjautuminen](./client/content/documentation/ulokirjautuminen.png)
-
-
-### Aikataulusivu
-
-
-![Aikataulu](https://gitlab.com/tmati/hsl-timetable/blob/riina_final/client/content/documentation/aikataulu.PNG)
 
 
 ## TIETOKANTA
