@@ -1,6 +1,6 @@
 <?php
 /**
- * Class Database witch handler database.
+ * Database class witch handler database.
  */
 class Database {
 
@@ -43,14 +43,19 @@ class Database {
 
     /**
      * Inserts data into database.
-     * @param $data the data to add.
-     * @param $i
+     * @param $data
+     * @param $i the prepared statement
+     * @return string
      */
     public function insert($data, $i) {
         $db = $this->connect();
-        if ($stmt = $db->prepare($this->prepareStatements[$i][0])) {
+        try {
             #echo $this->prepareStatements[$i][0];
             #echo $this->prepareStatements[$i][1]."";
+
+            # Prepare a statement
+            $stmt = $db->prepare($this->prepareStatements[$i][0]);
+
             # bind parameters
              if($i == 3) {
                  $stmt->bind_param($this->prepareStatements[$i][1] . "", $data->{'name'});
@@ -59,16 +64,16 @@ class Database {
              } else if ($i == 5) {
                  $stmt->bind_param($this->prepareStatements[$i][1] . "", $data->{'stopName'}, $data->{'stopID'});
              }
-            if ($stmt->execute() === true) {
-                echo "New user created successfully";
-            } else {
-                echo "Error: " . $stmt . "<br>" . $db->error;
-            }
+
+             # execute query
+            $stmt->execute();
+
             $stmt->close();
-        } else {
-            echo "ERROR sql query";
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
         $db->close();
+        return "";
     }
 
     /**
@@ -76,65 +81,68 @@ class Database {
      * @param $table
      * @param $values
      * @param $condition
-     * @param $i the prepared statement types
+     * @param $i the prepared statement
      * @return bool|mysqli_result
      */
     public function select($table, $values, $condition, $i) {
         $db = $this->connect();
         #create a prepared statement
         $arr = [];
-        if ($stmt = $db->prepare($this->prepareStatements[$i][0])) {
-
-
+        try {
              #echo $this->prepareStatements[$i][0];
              #echo $this->prepareStatements[$i][1]."";
+
+            $stmt = $db->prepare($this->prepareStatements[$i][0]);
+
             # bind parameters
             $stmt->bind_param($this->prepareStatements[$i][1]."", $condition);
 
             # execute query
             $stmt->execute();
 
-            # bind result variables
-            #$stmt->bind_result($result);
             $result = $stmt->get_result();
 
             #echo var_export($result->fetch_all());
-
             # fetch values
             while ($row = $result->fetch_row()) {
                 #echo var_export($row);
                 $arr[] = $row[0];
             }
-#echo "testi";
             $stmt->close();
+        } catch (Exception $e) {
+            return array("message" => $e->getMessage());
         }
         $db->close();
         return $arr;
     }
 
-    public function delete($condition, $i) {
-        #echo "Valitse ";
+    /**
+     * Delete data from database.
+     * @param $id the id of removed data
+     * @param $i the prepared statement
+     * @return string
+     */
+    public function delete($id, $i) {
         $db = $this->connect();
-        if ($stmt = $db->prepare($this->prepareStatements[$i][0])) {
-
-
+        try {
             #echo $this->prepareStatements[$i][0];
             #echo $this->prepareStatements[$i][1]."";
+
+            # Prepare a statement
+            $stmt = $db->prepare($this->prepareStatements[$i][0]);
+
             # bind parameters
-            $stmt->bind_param($this->prepareStatements[$i][1]."", $condition);
+            $stmt->bind_param($this->prepareStatements[$i][1]."", $id);
 
             # execute query
-            $query = $stmt->execute();
-
-            #echo var_export($result->fetch_all());
-            if ( false === $query ) {
-                echo 'mysqli execute() failed: ';
-            }
+            $stmt->execute();
 
             $stmt->close();
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
-
         $db->close();
+        return "";
     }
 }
 ?>

@@ -15,7 +15,7 @@ include 'database.php';
         }
         $resource = array();
         $resource = explode('/', $resource_string);
-        for($i=0; $i <=1; $i++){
+        for($i=0; $i <=2; $i++){
         	array_shift($resource);
 		}
         //array_shift($resource);
@@ -51,8 +51,7 @@ include 'database.php';
 # ------------------------------
 
     function postUser($database, $body) {
-
-        $database->insert($body, 3);
+        return $database->insert($body, 3);
 	}
 
 	function postFavoriteStop($database, $body) {
@@ -65,8 +64,8 @@ include 'database.php';
         $results = $database->select("favourites", "StopID", $userID, 1);
         #echo $results[0];
         #echo sizeof($results);
+        $array = array();
         if (sizeof($results) > 0) {
-            $array = array();
             for ($x = 0; $x < sizeof($results); $x++) {
                 #echo $results[$x];
                 $stop = $database->select("stops", "Name", $results[$x], 2) ;
@@ -86,7 +85,7 @@ include 'database.php';
             #echo sizeof($array);
             return $array;
         } else {
-            return 0;
+            return $array;
         }
         #$row = mysqli_fetch_assoc($result);
         #echo implode(",",$result);
@@ -94,14 +93,12 @@ include 'database.php';
     }
 
     function getUserID($database, $userName) {
-        $result = $database->select("users", "UserID", $userName, 0);
+        return $database->select("users", "UserID", $userName, 0);
         #$row = mysqli_fetch_assoc($result);
-        return $result[0];
     }
 
     function deleteFavorite($database, $stopID) {
-        $database->delete($stopID, 6);
-       # $database->delete("stops", "StopID=".'"'.$stopID.'"');
+        return $database->delete($stopID, 6);
     }
 
 
@@ -126,25 +123,59 @@ include 'database.php';
 $database = new Database("localhost","hsl", "hsl", "hsl");
 
     # Redirect to appropriate handlers.
-	if ($resource[0]=="index.php") {
+	if ($resource[0]=="rtmapi") {
 
-    	if ($request_method=="POST" && array_key_exists('name', $body)) {
-    		postUser($database, $body);
-            http_response_code(200); # OK
+    	if ($request_method=="POST" && $resource[1]=="user") {
+    		$message = postUser($database, $body);
+            if (empty($message)) {
+                # Set response code - 200 OK
+                http_response_code(200);
+                echo json_encode(
+                    array("message" => "Adding ".$body->name." success")
+                );
+            } else {
+                # Set response code - 409 Conflict
+                http_response_code(409);
+                echo json_encode(
+                    array("message" => "ERROR: ".$message)
+                );
+            }
     	}
-        else if ($request_method=="POST" && array_key_exists('userID', $body) && array_key_exists('stopID', $body)) {
-            postFavoriteStop($database, $body);
-            http_response_code(200); # OK
+        else if ($request_method=="POST" && $resource[1]=="favoritestop") {
+            $message = postFavoriteStop($database, $body);
+            if (empty($message)) {
+                # Set response code - 200 OK
+                http_response_code(200);
+                echo json_encode(
+                    array("message" => "Adding ".$body->stopName." success")
+                );
+            } else {
+                # Set response code - 409 Conflict
+                http_response_code(409);
+                echo json_encode(
+                    array("message" => "ERROR:".$message)
+                );
+            }
         }
-        else if ($request_method=="GET" && key($parameters) == "ID") {
-            #getStops($database, $parameters["userID"]);
-            #echo $parameters["userID"];
-            $stops = getStops($database, $parameters["ID"]);
+        else if ($request_method=="GET" && $resource[1]=="stops") {
+            $stops = getStops($database, $resource[2]);
             #echo json_encode($stops);
             #echo sizeof($stops);
            # echo json_encode($stops[1]);
            # echo print_f ($stops);
-            if (sizeof($stops) > 0) {
+            if (empty($stops)) {
+                # Set response code - 404 Not found
+                http_response_code(404);
+                echo json_encode(
+                    array("message" => "Stops for user " . $resource[2] . " not found.")
+                );
+            } else if(array_key_exists("message", $stops)) {
+                # Set response code - 500 Internal Server Error
+                http_response_code(500);
+                echo json_encode(
+                    array("message" => "ERROR: " . $message)
+                );
+            } else {
                 #echo "jbkn";
                 #$data->"favorites"=$stops;
                 $data = array(
@@ -159,29 +190,59 @@ $database = new Database("localhost","hsl", "hsl", "hsl");
                 echo json_encode($data);
             }
         }
-        else if ($request_method=="GET" && key($parameters) == "user") {
-            $userID = getUserID($database, $parameters["user"]);
+        else if ($request_method=="GET" && $resource[1]=="users") {
+            $userID = getUserID($database, $resource[2]);
             #echo $userID;
-            if ($userID > 0) {
-                $data = array(
-                    "userID" => $userID,
-                    "userName" => $parameters["user"]
+            if (empty($userID)) {
+                # Set response code - 404 Not found
+                http_response_code(404);
+                echo json_encode(
+                    array("message" => "User ".$resource[2]." not found.")
                 );
+            } else if(array_key_exists("message", $userID)) {
+                # Set response code - 500 Internal Server Error
+                http_response_code(500);
+                echo json_encode(
+                    array("message" => "ERROR: ".$message)
+                );
+            } else {
+                $data = array(
+                    "userID" => $userID[0],
+                    "userName" => $resource[2]
+                );
+                # Set response code - 200 OK
                 http_response_code(200); # OK
                 echo json_encode($data);
             }
         }
-        else if($request_method=="DELETE" && key($parameters) == "sID") {
-            deleteFavorite($database, $parameters["sID"]);
-            http_response_code(200); # OK
+        else if($request_method=="DELETE" && $resource[1]=="favorite") {
+            $message = deleteFavorite($database, $resource[2]);
+            if (empty($message)) {
+                # Set response code - 200 OK
+                http_response_code(200);
+                echo json_encode(
+                    array("message" => "Deleting ".$resource[2]." success")
+                );
+            } else {
+                # Set response code - 404 Not found
+                http_response_code(404);
+                echo json_encode(
+                    array("message" => "ERROR: ".$message)
+                );
+            }
+        } else {
+            # Set response code - 405 Method not allowed
+            http_response_code(405);
+            echo json_encode(
+                array("message" => $resource[1]." is wrong method")
+            );
         }
-        else {
-            http_response_code(405); # Method not allowed
-            echo "Ei ole komento";
-        }
-
 	}
 	else {
-		http_response_code(405); # Method not allowed
+        # Set response code - 405 Method not allowed
+		http_response_code(405);
+        echo json_encode(
+            array("message" => "Wrong API")
+        );
 	}
 ?>

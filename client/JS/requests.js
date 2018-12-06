@@ -19,7 +19,7 @@ function getUser(name) {
                     alert("Name not found in database. Try again.");
                 }
         }
-        const request = "http://localhost/server/index.php?user=" + name;
+        const request = "http://localhost/server/index.php/rtmapi/users/" + name;
         xhttp.open("GET", request, true);
         xhttp.send();
     }
@@ -39,7 +39,7 @@ function getFavorites(id) {
             sessionStorage.setItem('favorites', JSON.stringify(favorites));
             showFavTable();
         }
-        const request = "http://localhost/server/index.php?ID=" + id;
+        const request = "http://localhost/server/index.php/rtmapi/stops/" + id;
         xhttp.open("GET", request, true);
         xhttp.send();
     }
@@ -58,7 +58,7 @@ function postUser(name) {
                 console.log("Käyttäjä lisätty.");
         }
         const data = '{ "name" : "' + name + '" }';
-        const request = "http://localhost/server/index.php";
+        const request = "http://localhost/server/index.php/rtmapi/user";
         xhttp.open("POST", request, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(data);
@@ -80,7 +80,7 @@ function postFavoriteStop(userid, stopid, stopname) {
         }
         const data = '{ "userID" : "' + userid + '", "stopID" : "' + stopid + '", "stopName" : "' + stopname + '" }';
 
-        const request = "http://localhost/server/index.php";
+        const request = "http://localhost/server/index.php/rtmapi/favoritestop";
         xhttp.open("POST", request, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send(data);
@@ -99,7 +99,7 @@ function deleteFavoriteStop(id) {
             getFavorites(user.userID);
         }
 
-        const request = "http://localhost/server/index.php?sID=" + id;
+        const request = "http://localhost/server/index.php/rtmapi/favorite/" + id;
         xhttp.open("DELETE", request, true);
         xhttp.setRequestHeader("Content-type", "application/json");
         xhttp.send();
