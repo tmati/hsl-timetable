@@ -59,7 +59,35 @@ function getDataForTimetable(requested) {
                 const routeCell = document.getElementById('routeCell' + i);
                 var routeDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign;
                 var routeLongDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName;
-                routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "FERRY") {
+                    routeCell.innerHTML = "<h3>" + "Boarding" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                } else {
+                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                }
+
+                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "TRAM") {
+                    routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                } else {
+                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                }
+
+                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "BUS") {
+                    routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                } else {
+                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                }
+
+                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "RAIL") {
+                    routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                } else {
+                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                }
+
+                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "SUBWAY") {
+                    routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                } else {
+                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
+                }
 
                 const timeCell = document.getElementById('timeCell' + i);
                 var routeArrival = addMinutesToTime(((stopData.data.stops[0].stoptimesWithoutPatterns[i].realtimeArrival - getSecSinceMidnight()) / 60) | 0);
@@ -120,7 +148,7 @@ function isStopNameValid(stopName, stopNumber) {
                 sessionStorage.setItem('textStopName', stopName);
                 const dateString = getDate();
                 document.getElementById('dateDiv').innerText = dateString;
-                document.getElementById('stopDiv').innerHTML = jsonArr[0].code;
+                document.getElementById('stopDiv').innerHTML = jsonArr[0].name;
                 document.getElementById('timeDiv').innerText = gettime();
                 getDataForTimetable(jsonArr[0].code);
             } else {

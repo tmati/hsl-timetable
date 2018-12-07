@@ -2,6 +2,10 @@
     font-size: 2em;
 }
 
+thead {
+    font-size: 1.5em;
+}
+
 #stopDiv {
     text-align: center;
 }
@@ -33,22 +37,22 @@ tr {
 }
 
 .lineCell {
-    font-size: 4em;
+    font-size: 5em;
 }
 
 .imgCell img {
-    max-width: 4em;
+    max-width: 5em;
     padding-top: 1em;
 }
 
 .routeCell {
-    line-height: 0.4em;
     text-align: center;
 }
 
 .routeCell p {
     color: lightgray;
-    font-size: 1.5em;
+    font-size: 1.25em;
+    line-height: 1em;
 }
 
 .routeCell h3 {
@@ -58,7 +62,7 @@ tr {
 }
 
 .timeCell {
-    font-size: 4em;
+    font-size: 5em;
     text-align: right;
 }
 

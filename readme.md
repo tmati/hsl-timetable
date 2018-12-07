@@ -1,4 +1,4 @@
-# HSL - PYSÄKKINÄYTTÖ DOKUMENTAATIO
+# HSL - PYSÄKKINÄYTTÖ - DOKUMENTAATIO
 
 ## KÄYTTÖTAPAUKSET
 
@@ -10,7 +10,7 @@
 ------------------------------------------------------------------------------------------------------------------------------- | --------------------
 Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi | 
 
-### Kirjatuminen
+### Kirjautuminen
 
 1. Kirjautuminen avautuu painalla ["LUO KÄYTTÄJÄ | KIRJAUDU" -nappia](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjautuminen.PNG)
 2. Avautuva [lomake](https://gitlab.com/tmati/hsl-timetable/blob/master/client/content/documentation/kirjaudu.PNG) mahdollistaa uuden käyttäjän lisäämisen tai sisäänkirjautumisen.
@@ -21,12 +21,12 @@ Aikataulujen haku kirjoittamalla hakukenttään pysäkin nimi |
 
 
 ## TIETOKANTA
-Tietokantamme nimi on hsl ja se koostuu kolmesta taulusta, jotka ovat users, stops ja favorites.
+Projektimme käyttää paikallista MySQL-tietokantaa. Tietokantamme nimi on hsl ja se koostuu kolmesta taulusta, jotka ovat users, stops ja favorites.
  
-_HUOM: Taulut täytetty esimerkki datalla._
+_HUOM: Taulut täytetty esimerkkidatalla._
 
 ### users
-Käyttäjän ID generoituu autmaattisesti tietokantaan lisättäessä.
+Käyttäjän ID generoituu automaattisesti tietokantaan lisättäessä.
 
 Username (varchar) | UserID (int)
 -------- | ------

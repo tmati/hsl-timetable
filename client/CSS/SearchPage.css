@@ -37,18 +37,23 @@ input[type="button"]:hover  {
 .autocomplete-items {
     color: black;
     z-index: 99;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 #searchFieldLabel {
     font-size: 2.5em;
 }
 
+
 .autocomplete-items div {
-    max-width: 30em;
-    padding: 1em;
+    position: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     cursor: pointer;
     background-color: #fff;
     border-bottom: 1px solid #d4d4d4;
+    margin: 0 auto;
 }
 
 .autocomplete-items div:hover {
@@ -77,11 +82,6 @@ input[type="button"]:hover  {
 
 th {
     text-align: center;
-}
-
-
-.routeCell p {
-    display: none;
 }
 
 #loginInfo {

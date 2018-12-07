@@ -30,6 +30,10 @@ body {
     .autocomplete-items p {
         font-size: 15px;
     }
+    .routeCell p {
+        display: inline-block;
+        font-size: 0.5em;
+    }
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -47,9 +51,6 @@ body {
     #favoritesTableHead {
         font-size: 25px;
     }
-    .routeCell p {
-        display: inline-block;
-    }
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -60,9 +61,10 @@ body {
     #searchField {
         max-width: 70%;
     }
-    .routeCell p {
-        display: inline-block;
+    .autocomplete-items div {
+        max-width: 70%;
     }
+
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
