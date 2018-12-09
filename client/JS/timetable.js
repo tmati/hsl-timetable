@@ -1,14 +1,14 @@
+'use strict'
 
 var timer = null;
 
 /**
  * Hides the icon and adds the currently displayed stop into the users favorite list.
  */
-
 function hideIconAddFav() {
     closeID('favIcon');
     const userdat = sessionStorage.getItem('userdata');
-   const user = JSON.parse(userdat);
+    const user = JSON.parse(userdat);
     console.log(userdat);
     postFavoriteStop(user.userID, sessionStorage.getItem('stopNumber'), sessionStorage.getItem('textStopName'));
 }
@@ -19,7 +19,6 @@ function hideIconAddFav() {
  * @returns {string} The relative address of the correct image.
  */
 function setModeIcon(mode) {
-    //var img = document.createElement('img');
     let image = "#";
     switch (mode) {
         case "FERRY":

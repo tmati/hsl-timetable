@@ -1,9 +1,27 @@
+'use strict'
+
+/**
+ *
+ * @param id
+ */
 function openID(id) {
     document.getElementById(id).style.display = "block";
 }
 
+/**
+ * Hide element.
+ * @param id
+ */
 function closeID(id) {
     document.getElementById(id).style.display = "none";
+}
+
+function showError(id, text) {
+    const div = document.getElementById(id);
+    const error = document.createElement('div');
+    error.setAttribute('class', 'errorDiv');
+    error.innerHTML = text;
+    div.appendChild(error);
 }
 
 // Displays the login
@@ -56,10 +74,10 @@ function logout() {
  */
 function searchSchedule() {
     const stop = document.getElementById('searchField').value;
-        cleanAndSaveName(stop);
-        const url = window.location.href;
-        const request = url.substring(0, url.indexOf("#")) + "#timetable";
-        window.location.href = request;
+    cleanAndSaveName(stop);
+    const url = window.location.href;
+    const request = url.substring(0, url.indexOf("#")) + "#timetable";
+    window.location.href = request;
 }
 
 /**

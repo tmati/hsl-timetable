@@ -1,5 +1,7 @@
+'use strict'
+
 /**
- * Get user query for REST API
+ * REST API request (GET) for getting the user from database.
  * @param name queries by name.
  */
 function getUser(name) {
@@ -9,16 +11,14 @@ function getUser(name) {
             if (this.readyState == 4 && this.status == 200) {
                 const data = JSON.parse(xhttp.responseText);
                 const foundName = data.userName;
-                if (foundName != null) {
-                    closeID("loginInfo");
-                    closeID("loginForm");
-                    document.getElementById('user').innerHTML = foundName;
-                    openID("logoutForm");
-                    sessionStorage.setItem('userdata', xhttp.responseText);
-                    getFavorites(data.userID);
-                } else {
-                    alert("Name not found in database. Try again.");
-                }
+                closeID("loginInfo");
+                closeID("loginForm");
+                document.getElementById('user').innerHTML = foundName;
+                openID("logoutForm");
+                sessionStorage.setItem('userdata', xhttp.responseText);
+                getFavorites(data.userID);
+            } else if (this.readyState == 4 ) {
+                showError("loginInfo", "User not found in database!");
             }
         }
         const request = "http://localhost/server/index.php/rtmapi/users/" + name;
@@ -28,10 +28,9 @@ function getUser(name) {
 }
 
 /**
- * GET favorites request to the REST API.
+ * REST API request (GET) for getting the favorite stops from database.
  * @param id querying by userID
  */
-
 function getFavorites(id) {
     if (id != null) {
         const xhttp = new XMLHttpRequest();
@@ -50,8 +49,8 @@ function getFavorites(id) {
 }
 
 /**
- * POST user request to the REST API.
- * @param name The name to send to the database.
+ * REST API request (POST) for adding the user to database.
+ * @param name The new username
  */
 
 function postUser(name) {
@@ -72,7 +71,7 @@ function postUser(name) {
 }
 
 /**
- * REST API request (POST) for adding the favorite stop.
+ * REST API request (POST) for adding the favorite stop to database.
  * @param stopid The StopID to add
  * @param userid The UserID to add
  * @param stopname The stop plaintext name to add
@@ -96,7 +95,7 @@ function postFavoriteStop(userid, stopid, stopname) {
 }
 
 /**
- * REST API request (DELETE) for removing the favorite stop.
+ * REST API request (DELETE) for removing the favorite stop from database.
  * @param id the id of favorite stop
  */
 function deleteFavoriteStop(id) {

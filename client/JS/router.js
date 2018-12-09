@@ -1,5 +1,12 @@
 'use strict';
 
+// https://medium.com/frontend-fun/js-vanilla-script-spa-1b29b43ea475
+
+/**
+ * Router class which handling routing.
+ * @param routes
+ * @constructor
+ */
 function Router(routes) {
     try {
         if (!routes) {
@@ -62,8 +69,10 @@ Router.prototype = {
                         document.getElementById('user').innerHTML = user.userName;
                         openID("logoutForm");
                         getFavorites(user.userID);
-                    } else {
+                    } else if (htmlName === "search.html"){
                         showFavTable();
+                    } else {
+
                     }
                 }
             };
