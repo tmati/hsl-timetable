@@ -1,3 +1,5 @@
+'use strict'
+
 /**
  * Querying HSL API for stop name information. Is called every time the search field is updated.
  */

@@ -1,5 +1,14 @@
 'use strict'
 
+// https://medium.com/frontend-fun/js-vanilla-script-spa-1b29b43ea475
+
+/**
+ * Route class
+ * @param name
+ * @param htmlName
+ * @param defaultRoute
+ * @constructor
+ */
 function Route(name, htmlName, defaultRoute) {
     try {
         if (!name || !htmlName) {

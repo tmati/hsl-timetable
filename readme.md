@@ -1,5 +1,7 @@
 # HSL - PYSÄKKINÄYTTÖ - DOKUMENTAATIO
 
+Sivusto toimii paikallisesti osoitteessa: http://localhost/client/index.html 
+
 ## KÄYTTÖTAPAUKSET
 
 ### Hakusivu

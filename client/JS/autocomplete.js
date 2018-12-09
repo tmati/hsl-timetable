@@ -1,8 +1,15 @@
+'use strict'
+
 // https://www.w3schools.com/howto/howto_js_autocomplete.asp
 
+/**
+ * Autocomplete the text field of stops search.
+ * @param inp the text field element
+ * @param arr an array of possible autocompleted values
+ */
 function autocomplete(inp, arr) {
-    /*the autocomplete function takes two arguments, the text field element and an array of possible autocompleted values:*/
     var currentFocus;
+
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener("input", function (e) {
         var a, b, i, val = this.value;
@@ -41,6 +48,7 @@ function autocomplete(inp, arr) {
             }
         }
     });
+
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener("keydown", function (e) {
         var x = document.getElementById(this.id + "autocomplete-list");

@@ -1,3 +1,7 @@
+.errorDiv {
+    color: red;
+}
+
 .loginForm {
     display: none;
 }
