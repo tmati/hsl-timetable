@@ -1,3 +1,7 @@
+i {
+    color: white;
+}
+
 #topDiv {
     font-size: 2em;
 }
@@ -66,12 +70,6 @@ tr {
     text-align: right;
 }
 
-#centerDiv {
-    display: inline-flex;
-    margin: auto;
-    text-align: center;
-}
-
 #leftDiv {
     display: inline-flex;
     margin: auto;
@@ -82,11 +80,3 @@ tr {
     background: transparent;  /* optional: just make scrollbar invisible */
 }
 
-.fa-star {
-    color: white;
-    float: right;
-}
-
-.fa-arrow-alt-circle-left {
-    color: white;
-}

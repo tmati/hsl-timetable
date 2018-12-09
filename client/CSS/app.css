@@ -27,13 +27,6 @@ body {
         font-size: 10px;
         background-repeat: no-repeat;
     }
-    .autocomplete-items p {
-        font-size: 15px;
-    }
-    .routeCell p {
-        display: inline-block;
-        font-size: 0.5em;
-    }
 }
 
 /* Medium devices (tablets, 768px and up) */
