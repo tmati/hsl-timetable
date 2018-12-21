@@ -62,6 +62,7 @@ function getStopTimeTable(param) {
     document.getElementById('dateDiv').innerText = dateString;
     document.getElementById('stopDiv').innerHTML = sessionStorage.getItem('textStopName');
     document.getElementById('timeDiv').innerText = gettime();
+    getDataForTimetable(sessionStorage.getItem('textStopName'));
 
 }
 

@@ -55,37 +55,13 @@ function getDataForTimetable(requested) {
                 const imgCell = document.getElementById('typeImage' + i);
                 var lineType = setModeIcon(stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode);
                 imgCell.src = lineType;
-                //lineCell.innerHTML = newImage;
-                //imgCell.appendChild(lineType);
 
                 const routeCell = document.getElementById('routeCell' + i);
                 var routeDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].headsign;
                 var routeLongDesc = stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.longName;
-                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "FERRY") {
-                    routeCell.innerHTML = "<h3>" + "Boarding" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                } else {
-                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                }
 
-                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "TRAM") {
-                    routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                } else {
-                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                }
-
-                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "BUS") {
-                    routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                } else {
-                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                }
-
-                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "RAIL") {
-                    routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                } else {
-                    routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
-                }
-
-                if (routeDesc === null && stopData.data.stops[0].stoptimesWithoutPatterns[i].trip.route.mode == "SUBWAY") {
+                if (routeDesc === null) {
+                    console.log("null received");
                     routeCell.innerHTML = "<h3>" + "Linja vaihtuu" + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
                 } else {
                     routeCell.innerHTML = "<h3>" + routeDesc + "</h3>" + "<br />" + "<p>" + routeLongDesc + "</p>";
